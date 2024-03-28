@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
-    <link rel="stylesheet" href="master.css" />
+    <link rel="stylesheet" href="css/home.css" />
+    
   </head>
   <body>
     <div class="section-container">
@@ -17,11 +18,23 @@
           </picture>
         </div>
         <div class="welcome" id="welcome">
-            <h4>Welcome to X App <span class="xxf">MD. Khaled Ahasan</span></h2>
+            <h4>Welcome to X App <span class="name">Md. Khaled Ahasan</span></h2>
+        </div>
+        <div class="nav-button" id="nav-button">
+            <button>
+                <img src="./images/hrm.png" alt="No Image" width="30"/>
+                HRM
+            </button>
+            <button>
+                <img src="./images/accounting.png" alt="No Image" width="30"/>
+                ACCOUNTS
+            </button>
         </div>
       </section>
       <section class="main" id="main">
-        <h2>section two</h2>
+        <a href="http://www.berichbd.com">
+            <img src="./images/Amy Logo.png" alt="No Image" />
+        </a>
       </section>
       <section class="bottom-section" id="bottom-section">
         <button>Notice Board</button>
@@ -29,5 +42,6 @@
         <button>Options</button>
       </section>
     </div>
-  </body>
+    <script type="module" src="js/homepage.js"></script>
+  </body> 
 </html>

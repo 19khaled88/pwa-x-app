@@ -1,0 +1,150 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background-color: #28282B;
+}
+
+/* body {
+    display: flex;
+    flex-wrap: wrap;
+  } */
+
+.section-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    margin: auto;
+}
+
+
+
+/* Top section css start*/
+
+.top-section .app-title {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    height: 5vh;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.top-section .app-title>h2 {
+    font-size: 4vh;
+    color: white;
+}
+
+.top-section .app-title>img {
+    height: 100%;
+}
+
+.top-section .welcome {
+    /* color: #D0D1D2; */
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    background-color: gray;
+
+    height: 50px;
+    /* width: 480px; */
+    padding-left: 10px;
+    font-size: 15px;
+}
+
+.top-section .welcome .name {
+    text-transform: uppercase;
+
+}
+
+.top-section .nav-button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+    margin-right: 10px;
+    gap: 3px;
+    margin-top: 2px;
+    button {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        width: 240px;
+        height: 35px;
+        background-color: #007FFF;
+        border: none;
+        color: white;
+        font-size: 90%;
+        cursor: pointer;
+    }
+}
+
+
+/*Top section css ends here*/
+
+
+
+/*Main section css start here*/
+.main {
+    margin: 10px auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+
+    img {
+        max-width: 100%;
+        max-height: 100%;
+    }
+}
+
+
+/*Main section css ends here*/
+
+
+
+/*Bottom section css start here*/
+.bottom-section {
+    height: 10vh;
+    display: flex;
+    flex-direction: "row";
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.bottom-section {
+    button {
+        width: 160px;
+        height: 35px;
+        background-color: #0e86d4;
+        border: none;
+        color: white;
+        font-size: 90%;
+        cursor: pointer;
+
+        &:hover {
+            background-color: darkcyan;
+        }
+    }
+
+}
+
+/*Bottom section css ends here*/
