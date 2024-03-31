@@ -1,5 +1,4 @@
 import { homepageImage } from "../helpers/db.js";
-
 function mapHomepageIcon() {
 
   const container = document.getElementById("main");// Get the image element by its id
@@ -23,8 +22,6 @@ function mapHomepageIcon() {
     // link.textContent = file;
     // link.target = '_blank'; // Open in a new tab
 
-    
-
     // Append the img elements to the container
     container.appendChild(imageElement);
     
@@ -32,3 +29,4 @@ function mapHomepageIcon() {
 }
 
 mapHomepageIcon();
+
