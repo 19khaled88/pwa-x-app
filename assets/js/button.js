@@ -1,7 +1,11 @@
 function routeToPage(path,data) {
     window.location.href = path;
    
-  }
+  } 
+
+function hrmBackBtn(path){
+  window.location.href = path;
+}
 
 
   

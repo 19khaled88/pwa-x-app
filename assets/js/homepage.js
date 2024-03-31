@@ -1,4 +1,4 @@
-import { homepageImage } from "../helpers/db.js";
+import { homepageImage } from "../../helpers/db.js";
 function mapHomepageIcon() {
 
   const container = document.getElementById("main");// Get the image element by its id
