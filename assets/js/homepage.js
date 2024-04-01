@@ -1,4 +1,11 @@
-import { homepageImage } from "../helpers/db.js";
+function routeToPage(path,data) {
+  window.location.href = path;
+ 
+} 
+
+import { homepageImage } from "../../helpers/db.js";
+
+
 
 function mapHomepageIcon() {
 
@@ -23,12 +30,13 @@ function mapHomepageIcon() {
     // link.textContent = file;
     // link.target = '_blank'; // Open in a new tab
 
-    
-
     // Append the img elements to the container
     container.appendChild(imageElement);
     
   });
 }
 
+
+
 mapHomepageIcon();
+

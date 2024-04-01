@@ -1,0 +1,87 @@
+
+body {
+    background-color: #28282b;
+}
+
+.section-container {
+    display: flex;
+    flex-direction: column;
+    /* height: 100vh; */
+}
+
+
+/*Top section start here*/
+
+.accountsTop {
+    position: fixed;
+    /* Make the section fixed */
+    top: 0;
+    /* Position it at the top of the viewport */
+    left: 0;
+    width: 100%;
+
+    background-color: #f0f0f0;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+
+    background-color: blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+
+    button {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        border: none;
+        background-color: blue;
+        height: 50px;
+
+        p {
+            color: white;
+            font-size: 18px;
+        }
+    }
+}
+
+/*Top section end here*/
+
+
+/*main section start here*/
+.accountsMain {
+    margin-top: 40px;
+    /* Allow it to grow to fill remaining space */
+    overflow-y: auto;
+    /* Allow vertical scrolling */
+    padding: 10px;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding-top: 5px;
+
+    div {
+        button {
+            padding: 10px 20px 10px 20px;
+            cursor: pointer;
+
+            p {
+                font-size: 19px;
+                margin-top: 8px;
+                margin-bottom: 5px;
+            }
+        }
+    }
+}
+
+.accountsMain .odd-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+}
+
+/*main section end here*/
