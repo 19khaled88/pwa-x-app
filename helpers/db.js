@@ -29,4 +29,68 @@ export const hrmIcons ={
     "loan status",
     "live roster duty"
   ]
+  
 }
+
+export const hrmIcon =[
+  {
+    "image":"../assets/images/hrm/hr_policy.png",
+    "title":"HR policy"
+  },
+  {
+    "image":'../assets/images/hrm/holidays.png',
+    "title":"holidays"
+  },
+  {
+    "image":'../assets/images/hrm/attendance.png',
+    "title":"attendance"
+  },
+  {
+    "image":'../assets/images/hrm/payslip.png',
+    "title":"payslip"
+  },
+  {
+    "image":'../assets/images/hrm/late.png',
+    "title":"late applicatoin"
+  },
+  {
+    "image":'../assets/images/hrm/leave.png',
+    "title":"leave application"
+  },
+  {
+    "image":'../assets/images/hrm/tax.png',
+    "title":"tax"
+  },
+  {
+    "image":'../assets/images/hrm/leave status.png',
+    "title":"leave status"
+  },
+  {
+    "image":'../assets/images/hrm/hr_policy.png',
+    "title":"HR policy"
+  },
+  {
+    "image":'../assets/images/hrm/hr_policy.png',
+    "title":"HR policy"
+  },
+  {
+    "image":'../assets/images/hrm/hr_policy.png',
+    "title":"HR policy"
+  },
+  {
+    "image":'../assets/images/hrm/hr_policy.png',
+    "title":"HR policy"
+  },
+  {
+    "image":'../assets/images/hrm/hr_policy.png',
+    "title":"HR policy"
+  },
+  {
+    "image":'../assets/images/hrm/hr_policy.png',
+    "title":"HR policy"
+  },
+  {
+    "image":'../assets/images/hrm/hr_policy.png',
+    "title":"HR policy"
+  }
+]
