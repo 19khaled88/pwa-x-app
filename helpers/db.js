@@ -67,30 +67,30 @@ export const hrmIcon =[
   },
   {
     "image":'../assets/images/hrm/hr_policy.png',
-    "title":"HR policy"
+    "title":"work from home"
   },
   {
     "image":'../assets/images/hrm/hr_policy.png',
-    "title":"HR policy"
+    "title":"work from home status"
   },
   {
     "image":'../assets/images/hrm/hr_policy.png',
-    "title":"HR policy"
+    "title":"provident fund"
   },
   {
     "image":'../assets/images/hrm/hr_policy.png',
-    "title":"HR policy"
+    "title":"mandatory saving scheme"
   },
   {
     "image":'../assets/images/hrm/hr_policy.png',
-    "title":"HR policy"
+    "title":"loan application"
   },
   {
     "image":'../assets/images/hrm/hr_policy.png',
-    "title":"HR policy"
+    "title":"loan status"
   },
   {
     "image":'../assets/images/hrm/hr_policy.png',
-    "title":"HR policy"
+    "title":"live roster duty"
   }
 ]

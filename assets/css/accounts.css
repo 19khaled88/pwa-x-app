@@ -1,3 +1,4 @@
+
 body {
     background-color: #28282b;
 }
@@ -11,7 +12,7 @@ body {
 
 /*Top section start here*/
 
-.hrmTop {
+.accountsTop {
     position: fixed;
     /* Make the section fixed */
     top: 0;
@@ -50,9 +51,8 @@ body {
 /*Top section end here*/
 
 
-
 /*main section start here*/
-.hrmMain {
+.accountsMain {
     margin-top: 40px;
     /* Allow it to grow to fill remaining space */
     overflow-y: auto;
@@ -73,13 +73,12 @@ body {
                 font-size: 19px;
                 margin-top: 8px;
                 margin-bottom: 5px;
-                width: 150px;
             }
         }
     }
 }
 
-.hrmMain .odd-div {
+.accountsMain .odd-div {
     display: flex;
     flex-direction: row;
     justify-content: end;

@@ -1,4 +1,12 @@
+function routeToPage(path,data) {
+  window.location.href = path;
+ 
+} 
+
 import { homepageImage } from "../../helpers/db.js";
+
+
+
 function mapHomepageIcon() {
 
   const container = document.getElementById("main");// Get the image element by its id
@@ -27,6 +35,8 @@ function mapHomepageIcon() {
     
   });
 }
+
+
 
 mapHomepageIcon();
 

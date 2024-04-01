@@ -3,7 +3,8 @@ function routeToPage(path,data) {
    
   } 
 
-function hrmBackBtn(path){
+
+function backBtn(path){
   window.location.href = path;
 }
 
@@ -12,5 +13,4 @@ function hrmBackBtn(path){
 //   document.addEventListener('DOMContentLoaded', function() {
 //     const myButton = document.getElementById('hrmButton');
 //     myButton.addEventListener('click', routeToPage);
-    
 //   });

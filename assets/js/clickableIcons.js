@@ -1,4 +1,4 @@
-import { hrmIcons,hrmIcon } from '../../helpers/db.js'
+import { hrmIcon } from '../../helpers/db.js'
 
 
 function createButton(item,index) {
@@ -11,13 +11,9 @@ function createButton(item,index) {
     itemImg.width = 150;
     itemImg.height =100;
 
-
     itemBtn.type = "button"
-
     itemBtn.classList.add("item-add-btn")
     
-  
-   
 
     // Add different classes based on even or odd index
     if ((index + 1 ) % 2 === 0) {
@@ -27,7 +23,6 @@ function createButton(item,index) {
     }
     label.innerText += item.title;
 
-    
 
     // div.appendChild(itemImg);
     div.appendChild(itemBtn); // Append the button to the div
