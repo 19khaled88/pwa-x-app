@@ -110,6 +110,11 @@ body {
     min-height: 70vh;
     padding-left: 10px;
     padding-right: 10px;
+    div{
+        button{
+            cursor: pointer;
+        }
+    }
     img {
         max-width: 100%;
         max-height: 100%;
