@@ -11,7 +11,7 @@ body {
 
 /*Top section start here*/
 
-.hrmTop {
+.hrmActivityTop {
     position: fixed;
     /* Make the section fixed */
     top: 0;
@@ -52,38 +52,46 @@ body {
 
 
 /*main section start here*/
-.hrmMain {
-    margin-top: 40px;
+.hrmActivityMain {
     /* Allow it to grow to fill remaining space */
     overflow-y: auto;
     /* Allow vertical scrolling */
     padding: 10px;
 
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+    margin: 40px auto;
     gap: 10px;
     padding-top: 5px;
 
     div {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
         button {
+            border: none;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
             padding: 10px 20px 10px 20px;
             cursor: pointer;
 
             p {
-                font-size: 19px;
+                font-size: 15px;
                 margin-top: 8px;
                 margin-bottom: 5px;
-                width: 150px;
+
                 text-transform: uppercase;
             }
         }
     }
 }
 
-.hrmMain .odd-div {
-    display: flex;
-    flex-direction: row;
-    justify-content: end;
-}
+
 
 /*main section end here*/

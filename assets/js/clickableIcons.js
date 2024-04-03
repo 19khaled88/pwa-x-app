@@ -1,4 +1,4 @@
-import { hrmIcon } from "../../helpers/db.js";
+
 
 async function fetchData() {
   try {
@@ -55,8 +55,31 @@ function createButton(item, index) {
   itemBtn.appendChild(itemImg);
   itemBtn.appendChild(label);
 
+
+  //  // Add onclick function to the button
+  //  itemBtn.onclick = function() {
+  //   // Add your onclick functionality here
+  //   console.log(item.title);
+  // };
+
+
+  itemBtn.addEventListener("click", function() {
+    
+    // navigateToPage(item.title);
+    routeToPage('../pages/HumanResourceActivity.html','',item.title)
+  });
+
+
+
   return div; // Return the div element containing the button
 
 }
+
+
+// function navigateToPage(text){
+//   console.log(text)
+
+//   // const url = `${path}?class_name=${encodeURIComponent(classInfo)}&data_title=${encodeURIComponent(dataTitle)}`;
+// }
 
 

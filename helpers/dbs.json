@@ -77,5 +77,58 @@
       "image":"../assets/images/accounts/bill.png",
       "title":"Bill entry"
     }
+  ],
+  "hr_policy":[
+    {
+      "title":"attendance policy",
+      "image":"../assets/images/paper-clip.png"
+    },
+    {
+      "title":"nonus policy",
+      "image":"../assets/images/paper-clip.png"
+    },
+    {
+      "title":"leave and holiday policy",
+      "image":"../assets/images/paper-clip.png"
+    },
+    {
+      "title":"medical policy",
+      "image":"../assets/images/paper-clip.png"
+    },
+    {
+      "title":"provident fund policy",
+      "image":"../assets/images/paper-clip.png"
+    },
+    {
+      "title":"loan agreement",
+      "image":"../assets/images/paper-clip.png"
+    },
+    
+    {
+      "title":"laptop policy",
+      "image":"../assets/images/paper-clip.png"
+    },
+    
+    {
+      "title":"mandatory saving scheme policy",
+      "image":"../assets/images/paper-clip.png"
+    },
+    
+    {
+      "title":"salary and other benefits",
+      "image":"../assets/images/paper-clip.png"
+    },
+    {
+      "title":"digital security policy",
+      "image":"../assets/images/paper-clip.png"
+    },
+    {
+      "title":"mandatory use of offical mobile sim and email address",
+      "image":"../assets/images/paper-clip.png"
+    },
+    {
+      "title":"dress code",
+      "image":"../assets/images/paper-clip.png"
+    }     
   ]
 }
