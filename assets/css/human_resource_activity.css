@@ -61,32 +61,71 @@ body {
     display: flex;
     flex-direction: column;
     width: 45%;
+    
     margin: 40px auto;
     gap: 10px;
     padding-top: 5px;
+
+   
+    #annual_holiday_list{
+        padding-top: 10px;
+        caption{
+            color: white;
+            padding-top: 10px;
+            font-size: 19px;
+        }
+        thead{
+            color: #FAF9F6;
+        }
+        tbody{
+            color: #C0C0C0;
+            tr{
+                td{
+                    padding-left: 5px;
+                }
+            }
+        }
+        tfoot{
+            tr{
+                td{
+                    text-align: center;
+                    color: red;
+                    
+                }
+            }
+        }
+    }  
 
     div {
         display: flex;
         flex-direction: row;
         justify-content: center;
         align-items: center;
-
+       
         button {
             border: none;
             width: 100%;
+            
             display: flex;
             flex-direction: row;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-            padding: 10px 20px 10px 20px;
+            padding: 10px;
             cursor: pointer;
-
+            span{
+                font-size: 15px;
+                padding-right: 5px;
+                font-weight: bold;
+            }
             p {
                 font-size: 15px;
-                margin-top: 8px;
-                margin-bottom: 5px;
-
+                flex: 1;
+                font-weight: 600;
+                text-align: left;
                 text-transform: uppercase;
+            }
+            img {
+                width: 15%;
             }
         }
     }

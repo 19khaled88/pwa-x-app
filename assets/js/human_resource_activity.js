@@ -23,7 +23,7 @@ if (pageTitle) {
           container.innerHTML = "";
           // Handle the result
           result.map((item, index) => {
-            container.appendChild(createButton(item, index));
+            container.appendChild(createPolicy(item, index));
           });
         })
         .catch((error) => {
@@ -34,9 +34,20 @@ if (pageTitle) {
       break;
     case "holidays":
       title.textContent = "Annual Holiday List";
+      fetchHrData("holiday_list")
+        .then((result) => {
+          const container = document.getElementById("hrmActivityMain"); // Get the image element by its id
+          container.innerHTML = "";
+          // Handle the result
+          container.appendChild(createHoliday(result));
+        })
+        .catch((error) => {
+          console.error(error);
+        });
       break;
     case "attendance":
       title.textContent = "My Attendence Status";
+      
       break;
     case "payslip":
       title.textContent = "My Payslip Status";
@@ -93,15 +104,16 @@ async function fetchHrData(heading) {
   }
 }
 
-function createButton(item, index) {
+function createPolicy(item, index) {
   const div = document.createElement("div"); // Create a div element
   const itemBtn = document.createElement("button"); // Create a button element
   const itemImg = document.createElement("img");
+  const spanElement = document.createElement("span");
   const label = document.createElement("p");
   itemImg.src = item.image;
   itemImg.alt = "Description of the image";
-  itemImg.width = 60;
-  itemImg.height = 50;
+  // itemImg.width = 60;
+  // itemImg.height = 50;
 
   itemBtn.type = "button";
   itemBtn.classList.add("item-add-btn");
@@ -114,9 +126,11 @@ function createButton(item, index) {
   }
 
   label.innerText += item.title;
+  spanElement.innerText += index + 1 + ".";
 
   // div.appendChild(itemImg);
   div.appendChild(itemBtn); // Append the button to the div
+  itemBtn.appendChild(spanElement);
   itemBtn.appendChild(label);
   itemBtn.appendChild(itemImg);
 
@@ -131,4 +145,81 @@ function createButton(item, index) {
   });
 
   return div; // Return the div element containing the button
+}
+
+function createHoliday(item) {
+  // Create table element
+  const table = document.createElement("table");
+  table.setAttribute("id", "annual_holiday_list");
+
+  // Create caption for the table
+  const topCaption = document.createElement("caption");
+  topCaption.textContent = "Annual Holiday List - 2024";
+  table.appendChild(topCaption);
+ 
+
+
+  // Create table header
+  const tableHeader = table.createTHead();
+  const headerRow = tableHeader.insertRow();
+  ["SL","Date", "Purpose"].forEach((headerText) => {
+    const th = document.createElement("th");
+    th.textContent = headerText;
+    headerRow.appendChild(th);
+  });
+
+  // Create table body
+  const tableBody = document.createElement("tbody");
+  table.appendChild(tableBody);
+
+  // Dictionary to store background colors for each purpose
+  const purposeColors = {};
+
+  // Populate table rows
+  item.forEach((event,index) => {
+    const row = tableBody.insertRow();
+    // event.date.forEach((datePart) => {
+    //   const cell = row.insertCell();
+    //   cell.textContent = datePart;
+    // });
+
+    const slCell = row.insertCell();
+    slCell.textContent = index + 1
+
+    const dateCell = row.insertCell();
+    // Split the date array by commas and join with <br> tags
+    dateCell.innerHTML = event.date.join("<br>");
+
+    const purposeCell = row.insertCell();
+    purposeCell.textContent = event.purpose;
+
+    let backgroundColor;
+    if ((index + 1 ) % 2 === 0) {
+      backgroundColor = ''; // Light blue for even rows
+    } else {
+      backgroundColor = '#606462'; // Light grey for odd rows
+    }
+
+   
+    // Check if purpose already has a background color assigned
+    if (!purposeColors[event]) {
+      purposeColors[event.purpose] = backgroundColor;
+    }
+
+    // Apply background color for cells with the same purpose
+    row.style.backgroundColor = purposeColors[event.purpose];
+  });
+
+  // Create table footer
+  const tableFooter = table.createTFoot();
+  const footerRow = tableFooter.insertRow();
+  const footerCell = footerRow.insertCell();
+  footerCell.colSpan = 3; // Span the cell across all columns
+  footerCell.textContent = ' ** Depends on sighting of the Moon';
+
+  return table;
+}
+
+function createAttendance(){
+  
 }
