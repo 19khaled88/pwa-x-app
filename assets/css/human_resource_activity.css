@@ -60,63 +60,78 @@ body {
 
     display: flex;
     flex-direction: column;
-    width: 45%;
-    
+    width: 90%;
     margin: 40px auto;
     gap: 10px;
     padding-top: 5px;
 
-   
-    #annual_holiday_list{
+    .policy-container {
+        width: 45%;
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+    }
+
+    #annual_holiday_list {
         padding-top: 10px;
-        caption{
+
+        caption {
             color: white;
             padding-top: 10px;
             font-size: 19px;
         }
-        thead{
+
+        thead {
             color: #FAF9F6;
         }
-        tbody{
+
+        tbody {
             color: #C0C0C0;
-            tr{
-                td{
+
+            tr {
+                td {
                     padding-left: 5px;
                 }
             }
         }
-        tfoot{
-            tr{
-                td{
+
+        tfoot {
+            tr {
+                td {
                     text-align: center;
                     color: red;
-                    
+
                 }
             }
         }
-    }  
+    }
 
     div {
         display: flex;
         flex-direction: row;
         justify-content: center;
         align-items: center;
-       
+
         button {
             border: none;
             width: 100%;
-            
+
             display: flex;
             flex-direction: row;
             justify-content: center;
             align-items: center;
             padding: 10px;
             cursor: pointer;
-            span{
+
+            span {
                 font-size: 15px;
                 padding-right: 5px;
                 font-weight: bold;
             }
+
             p {
                 font-size: 15px;
                 flex: 1;
@@ -124,6 +139,7 @@ body {
                 text-align: left;
                 text-transform: uppercase;
             }
+
             img {
                 width: 15%;
             }
