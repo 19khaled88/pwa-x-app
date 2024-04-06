@@ -70,7 +70,8 @@
     "./assets/images/BeFreshEdu Logo.png",
     "./assets/images/CtgShop.com_Logo,_2018.svg.png",
     "./assets/images/South East Money Exchange Logo.png",
-    "./assets/images/x-limited.png"
+    "./assets/images/x-limited.png",
+    "./assets/images/best_erp.png"
   ],
   "accounts":[
     {
@@ -130,5 +131,75 @@
       "title":"dress code",
       "image":"../assets/images/paper-clip.png"
     }     
+  ],
+  "holiday_list":[
+    {
+      "date":["21/Feb/2024","Wednesday"],
+      "purpose":"Martyr Day and International Mother Language Day"
+    },
+    {
+      "date":["26/Feb/2024","Monday"],
+      "purpose":"Shab-e-Barat"
+    },
+    {
+      "date":["26/Mar/2024","Tuesday"],
+      "purpose":"Independence Day"
+    },
+    {
+      "date":["07/Apr/2024","Sunday"],
+      "purpose":"Shab-e-Qadr**"
+    },
+    {
+      "date":["10/Apr/2024","Wednesday"],
+      "purpose":"Eid-Ul-Fitr**"
+    },
+    {
+      "date":["11/Apr/2024","Thursday"],
+      "purpose":"Eid-Ul-Fitr**"
+    },
+    {
+      "date":["12/Apr/2024","Friday"],
+      "purpose":"Eid-Ul-Fitr**"
+    },
+    {
+      "date":["14/Aprp/2024","Sunday"],
+      "purpose":"Pohela Boishakh"
+    },
+    {
+      "date":["1/May/2024","Wednesday"],
+      "purpose":"May Day"
+    },
+    {
+      "date":["16/Jun/2024","Sunday"],
+      "purpose":"Eid-Ul-Adha**"
+    },
+    {
+      "date":["17/Jun/2024","Monday"],
+      "purpose":"Eid-Ul-Adha**"
+    },
+    {
+      "date":["18/Jun/2024","Tuesday"],
+      "purpose":"Eid-Ul-Adha**"
+    },
+    {
+      "date":["17/Jul/2024","Wednesday"],
+      "purpose":"Muharram (Ashura)**"
+    },
+    {
+      "date":["15/Aug/2024","Thursday"],
+      "purpose":"National Mourning Day"
+    },
+    {
+      "date":["16/Aug/2024","Monday"],
+      "purpose":"Eid-e-Milad-UI-Nabi**"
+    },
+    {
+      "date":["13/Oct/2024","Sunday"],
+      "purpose":"Durga Puja"
+    },
+    {
+      "date":["16/Oct/2024","Monday"],
+      "purpose":"Victory Day"
+    }
   ]
 }

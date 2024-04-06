@@ -17,8 +17,8 @@ async function fetchData() {
       const imageElement = document.createElement("img"); // Create an img element for each file
       imageElement.src = file; // Set the src attribute to the URL of the image file
       imageElement.alt = "No image"; // Set the alt attribute
-      imageElement.width = 200; // Set the width and height attributes
-      imageElement.height = 100; // Set the width and height attributes
+      imageElement.width = 120; // Set the width and height attributes
+      imageElement.height = 60; // Set the width and height attributes
       itemBtn.type = "button";
       itemBtn.classList.add("item-add-btn");
 
