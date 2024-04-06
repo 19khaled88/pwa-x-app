@@ -21,9 +21,13 @@ if (pageTitle) {
         .then((result) => {
           const container = document.getElementById("hrmActivityMain"); // Get the image element by its id
           container.innerHTML = "";
+
+          const div = document.createElement("div"); // Create a div element
+          div.setAttribute("class", "policy-container");
+          const divContainer = container.appendChild(div);
           // Handle the result
           result.map((item, index) => {
-            container.appendChild(createPolicy(item, index));
+            divContainer.appendChild(createPolicy(item, index));
           });
         })
         .catch((error) => {
@@ -38,7 +42,7 @@ if (pageTitle) {
         .then((result) => {
           const container = document.getElementById("hrmActivityMain"); // Get the image element by its id
           container.innerHTML = "";
-          // Handle the result
+
           container.appendChild(createHoliday(result));
         })
         .catch((error) => {
@@ -47,7 +51,13 @@ if (pageTitle) {
       break;
     case "attendance":
       title.textContent = "My Attendence Status";
-      
+      fetchHrData("attendance")
+        .then((result) => {
+          createAttendance(result);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
       break;
     case "payslip":
       title.textContent = "My Payslip Status";
@@ -105,7 +115,6 @@ async function fetchHrData(heading) {
 }
 
 function createPolicy(item, index) {
-  const div = document.createElement("div"); // Create a div element
   const itemBtn = document.createElement("button"); // Create a button element
   const itemImg = document.createElement("img");
   const spanElement = document.createElement("span");
@@ -120,16 +129,14 @@ function createPolicy(item, index) {
 
   // Add different classes based on even or odd index
   if ((index + 1) % 2 === 0) {
-    div.classList.add("even-div");
+    itemBtn.classList.add("even-div");
   } else {
-    div.classList.add("odd-div");
+    itemBtn.classList.add("odd-div");
   }
 
   label.innerText += item.title;
   spanElement.innerText += index + 1 + ".";
 
-  // div.appendChild(itemImg);
-  div.appendChild(itemBtn); // Append the button to the div
   itemBtn.appendChild(spanElement);
   itemBtn.appendChild(label);
   itemBtn.appendChild(itemImg);
@@ -144,7 +151,7 @@ function createPolicy(item, index) {
     //   routeToPage('../pages/HumanResourceActivity.html','',item.title)
   });
 
-  return div; // Return the div element containing the button
+  return itemBtn; // Return the div element containing the button
 }
 
 function createHoliday(item) {
@@ -156,13 +163,11 @@ function createHoliday(item) {
   const topCaption = document.createElement("caption");
   topCaption.textContent = "Annual Holiday List - 2024";
   table.appendChild(topCaption);
- 
-
 
   // Create table header
   const tableHeader = table.createTHead();
   const headerRow = tableHeader.insertRow();
-  ["SL","Date", "Purpose"].forEach((headerText) => {
+  ["SL", "Date", "Purpose"].forEach((headerText) => {
     const th = document.createElement("th");
     th.textContent = headerText;
     headerRow.appendChild(th);
@@ -176,7 +181,7 @@ function createHoliday(item) {
   const purposeColors = {};
 
   // Populate table rows
-  item.forEach((event,index) => {
+  item.forEach((event, index) => {
     const row = tableBody.insertRow();
     // event.date.forEach((datePart) => {
     //   const cell = row.insertCell();
@@ -184,7 +189,7 @@ function createHoliday(item) {
     // });
 
     const slCell = row.insertCell();
-    slCell.textContent = index + 1
+    slCell.textContent = index + 1;
 
     const dateCell = row.insertCell();
     // Split the date array by commas and join with <br> tags
@@ -194,13 +199,12 @@ function createHoliday(item) {
     purposeCell.textContent = event.purpose;
 
     let backgroundColor;
-    if ((index + 1 ) % 2 === 0) {
-      backgroundColor = ''; // Light blue for even rows
+    if ((index + 1) % 2 === 0) {
+      backgroundColor = ""; // Light blue for even rows
     } else {
-      backgroundColor = '#606462'; // Light grey for odd rows
+      backgroundColor = "#606462"; // Light grey for odd rows
     }
 
-   
     // Check if purpose already has a background color assigned
     if (!purposeColors[event]) {
       purposeColors[event.purpose] = backgroundColor;
@@ -215,11 +219,90 @@ function createHoliday(item) {
   const footerRow = tableFooter.insertRow();
   const footerCell = footerRow.insertCell();
   footerCell.colSpan = 3; // Span the cell across all columns
-  footerCell.textContent = ' ** Depends on sighting of the Moon';
+  footerCell.textContent = " ** Depends on sighting of the Moon";
 
   return table;
 }
 
-function createAttendance(){
+function createAttendance(item) {
+  const container = document.getElementById("hrmActivityMain"); 
+  container.innerHTML = "";
+
+
+  const attendance_container = document.createElement("div");
+
   
+  const attendance_container_top_div = document.createComment("div");
+  const attendance_container_bottom_div = document.createComment("div");
+
+  // const attendance_container_top_div_span_1 = document.createElement("span");
+  // const attendance_container_top_div_span_2 = document.createElement("span");
+
+  // attendance_container_top_div.appendChild(attendance_container_top_div_span_1);
+  // attendance_container_top_div.appendChild(attendance_container_top_div_span_2);
+
+
+  // attendance_container_top_div_span_1.appendChild(createDropdown(item[0].months, "monthList"))
+
+
+  // attendance_container_top_div.appendChild(attendance_container_top_div_span_1);
+  // attendance_container_top_div.appendChild(attendance_container_top_div_span_2)
+
+  attendance_container.appendChild(attendance_container_top_div);
+  attendance_container.appendChild(attendance_container_bottom_div);
+
+  container.appendChild(attendance_container);
+
+
+
+  
+
+  // const div_1 = document.createElement("div");
+  // div_1.setAttribute("id", "myDiv");
+  // div_1.setAttribute("class", "myClass");
+
+  // // const div_1_top = document.createElement("div");
+  // // const div_1_bottom = document.createElement("div");
+  // const div_1_span_1 = document.createComment("span")
+  // const div_1_span_2 = document.createComment("span")
+
+  // const div_2 = document.createElement("div");
+
+  // // const btn = document.createElement("button");
+
+  // const attendance_container_div_1 = attendance_container.appendChild(div_1);
+  // const attendance_container_div_2 = attendance_container.appendChild(div_2);
+  // const div_1_span_1_container = attendance_container_div_1.appendChild(div_1_span_1)
+  // const div_1_span_2_container = attendance_container_div_1.appendChild(div_1_span_2)
+  // // btn.setAttribute("id", "atndOkBtn");
+  // // btn.setAttribute("class", "atndOkBtn");
+  // // btn.textContent = "OK";
+
+  // // attendance_container_div_1.appendChild(
+  // //   createDropdown(item[0].months, "monthList")
+  // // );
+  // // attendance_container_div_1.appendChild(
+  // //   createDropdown(item[1].years, "YearList")
+  // // );
+  // // attendance_container_div_1.appendChild(btn);
+
+
+  // container.appendChild(attendance_container_div_1);
+  // container.appendChild(attendance_container_div_2);
+}
+
+function createDropdown(options, id) {
+  const dropdown = document.createElement("select"); // Create select element
+  dropdown.setAttribute("id", id); // Set id attribute
+
+  // Create and append option elements for each dropdown item
+  options.forEach((option) => {
+    console.log(option);
+    const optionElement = document.createElement("option"); // Create option element
+    optionElement.value = option; // Set value attribute
+    optionElement.textContent = option; // Set text content
+    dropdown.appendChild(optionElement); // Append option element to dropdown
+  });
+
+  return dropdown; // Return the created dropdown
 }

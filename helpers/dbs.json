@@ -73,133 +73,170 @@
     "./assets/images/x-limited.png",
     "./assets/images/best_erp.png"
   ],
-  "accounts":[
+  "accounts": [
     {
-      "image":"../assets/images/accounts/bill.png",
-      "title":"Bill entry"
+      "image": "../assets/images/accounts/bill.png",
+      "title": "Bill entry"
     }
   ],
-  "hr_policy":[
+  "hr_policy": [
     {
-      "title":"attendance policy",
-      "image":"../assets/images/paper-clip.png"
+      "title": "attendance policy",
+      "image": "../assets/images/paper-clip.png"
     },
     {
-      "title":"nonus policy",
-      "image":"../assets/images/paper-clip.png"
+      "title": "nonus policy",
+      "image": "../assets/images/paper-clip.png"
     },
     {
-      "title":"leave and holiday policy",
-      "image":"../assets/images/paper-clip.png"
+      "title": "leave and holiday policy",
+      "image": "../assets/images/paper-clip.png"
     },
     {
-      "title":"medical policy",
-      "image":"../assets/images/paper-clip.png"
+      "title": "medical policy",
+      "image": "../assets/images/paper-clip.png"
     },
     {
-      "title":"provident fund policy",
-      "image":"../assets/images/paper-clip.png"
+      "title": "provident fund policy",
+      "image": "../assets/images/paper-clip.png"
     },
     {
-      "title":"loan agreement",
-      "image":"../assets/images/paper-clip.png"
+      "title": "loan agreement",
+      "image": "../assets/images/paper-clip.png"
     },
-    
+
     {
-      "title":"laptop policy",
-      "image":"../assets/images/paper-clip.png"
+      "title": "laptop policy",
+      "image": "../assets/images/paper-clip.png"
     },
-    
+
     {
-      "title":"mandatory saving scheme policy",
-      "image":"../assets/images/paper-clip.png"
+      "title": "mandatory saving scheme policy",
+      "image": "../assets/images/paper-clip.png"
     },
-    
+
     {
-      "title":"salary and other benefits",
-      "image":"../assets/images/paper-clip.png"
-    },
-    {
-      "title":"digital security policy",
-      "image":"../assets/images/paper-clip.png"
+      "title": "salary and other benefits",
+      "image": "../assets/images/paper-clip.png"
     },
     {
-      "title":"mandatory use of offical mobile sim and email address",
-      "image":"../assets/images/paper-clip.png"
+      "title": "digital security policy",
+      "image": "../assets/images/paper-clip.png"
     },
     {
-      "title":"dress code",
-      "image":"../assets/images/paper-clip.png"
-    }     
+      "title": "mandatory use of offical mobile sim and email address",
+      "image": "../assets/images/paper-clip.png"
+    },
+    {
+      "title": "dress code",
+      "image": "../assets/images/paper-clip.png"
+    }
   ],
-  "holiday_list":[
+  "holiday_list": [
     {
-      "date":["21/Feb/2024","Wednesday"],
-      "purpose":"Martyr Day and International Mother Language Day"
+      "date": ["21/Feb/2024", "Wednesday"],
+      "purpose": "Martyr Day and International Mother Language Day"
     },
     {
-      "date":["26/Feb/2024","Monday"],
-      "purpose":"Shab-e-Barat"
+      "date": ["26/Feb/2024", "Monday"],
+      "purpose": "Shab-e-Barat"
     },
     {
-      "date":["26/Mar/2024","Tuesday"],
-      "purpose":"Independence Day"
+      "date": ["26/Mar/2024", "Tuesday"],
+      "purpose": "Independence Day"
     },
     {
-      "date":["07/Apr/2024","Sunday"],
-      "purpose":"Shab-e-Qadr**"
+      "date": ["07/Apr/2024", "Sunday"],
+      "purpose": "Shab-e-Qadr**"
     },
     {
-      "date":["10/Apr/2024","Wednesday"],
-      "purpose":"Eid-Ul-Fitr**"
+      "date": ["10/Apr/2024", "Wednesday"],
+      "purpose": "Eid-Ul-Fitr**"
     },
     {
-      "date":["11/Apr/2024","Thursday"],
-      "purpose":"Eid-Ul-Fitr**"
+      "date": ["11/Apr/2024", "Thursday"],
+      "purpose": "Eid-Ul-Fitr**"
     },
     {
-      "date":["12/Apr/2024","Friday"],
-      "purpose":"Eid-Ul-Fitr**"
+      "date": ["12/Apr/2024", "Friday"],
+      "purpose": "Eid-Ul-Fitr**"
     },
     {
-      "date":["14/Aprp/2024","Sunday"],
-      "purpose":"Pohela Boishakh"
+      "date": ["14/Aprp/2024", "Sunday"],
+      "purpose": "Pohela Boishakh"
     },
     {
-      "date":["1/May/2024","Wednesday"],
-      "purpose":"May Day"
+      "date": ["1/May/2024", "Wednesday"],
+      "purpose": "May Day"
     },
     {
-      "date":["16/Jun/2024","Sunday"],
-      "purpose":"Eid-Ul-Adha**"
+      "date": ["16/Jun/2024", "Sunday"],
+      "purpose": "Eid-Ul-Adha**"
     },
     {
-      "date":["17/Jun/2024","Monday"],
-      "purpose":"Eid-Ul-Adha**"
+      "date": ["17/Jun/2024", "Monday"],
+      "purpose": "Eid-Ul-Adha**"
     },
     {
-      "date":["18/Jun/2024","Tuesday"],
-      "purpose":"Eid-Ul-Adha**"
+      "date": ["18/Jun/2024", "Tuesday"],
+      "purpose": "Eid-Ul-Adha**"
     },
     {
-      "date":["17/Jul/2024","Wednesday"],
-      "purpose":"Muharram (Ashura)**"
+      "date": ["17/Jul/2024", "Wednesday"],
+      "purpose": "Muharram (Ashura)**"
     },
     {
-      "date":["15/Aug/2024","Thursday"],
-      "purpose":"National Mourning Day"
+      "date": ["15/Aug/2024", "Thursday"],
+      "purpose": "National Mourning Day"
     },
     {
-      "date":["16/Aug/2024","Monday"],
-      "purpose":"Eid-e-Milad-UI-Nabi**"
+      "date": ["16/Aug/2024", "Monday"],
+      "purpose": "Eid-e-Milad-UI-Nabi**"
     },
     {
-      "date":["13/Oct/2024","Sunday"],
-      "purpose":"Durga Puja"
+      "date": ["13/Oct/2024", "Sunday"],
+      "purpose": "Durga Puja"
     },
     {
-      "date":["16/Oct/2024","Monday"],
-      "purpose":"Victory Day"
+      "date": ["16/Oct/2024", "Monday"],
+      "purpose": "Victory Day"
+    }
+  ],
+  "attendance": [
+    {
+      "months": [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December"
+      ]
+    },
+    {
+      "years":[
+        "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017",
+        "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027",
+        "2028", "2029", "2030", "2031", "2032", "2033", "2034", "2035", "2036", "2037",
+        "2038", "2039", "2040"
+      ]
+    },
+    {
+      "daysOfWeek": [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ]
     }
   ]
 }
