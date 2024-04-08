@@ -65,6 +65,59 @@ body {
     gap: 10px;
     padding-top: 5px;
 
+    .attendanceContainer {
+        width: 50%;
+        margin: auto;
+
+        .topDiv {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            border: 1px solid gray;
+            padding: 5px;
+            border-radius: 8px;
+            .topSpan {
+                display: flex;
+                flex-direction: row;
+                gap: 5px;
+                width: 100%;
+                
+                #monthList{
+                   width: 100%; 
+                   background-color: #C0C0C0;
+                }
+                #yearList{
+                    width: 100%;
+                    background-color: #C0C0C0;
+                }
+                .atndOkBtn{
+                    width: 25%;
+                    background-color: #C0C0C0;
+                }
+            }
+            .bottomSpan{
+                display: grid;
+                grid-template-columns: repeat(2,1fr);
+                
+                width: 100%;
+                div{
+                    padding-top: 10px;
+                    color: gray;
+                    #status_title{
+                        padding-right: 5px;
+                        margin: 3px 0 3px 0;
+                    }
+                    #status_value{
+                        text-align: left;
+                        width: 100%;
+                        margin: 0;
+                    }
+                }
+            }
+
+        }
+    }
+
     .policy-container {
         width: 45%;
         display: flex;
