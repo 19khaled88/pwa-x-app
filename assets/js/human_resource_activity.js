@@ -61,6 +61,7 @@ if (pageTitle) {
       break;
     case "payslip":
       title.textContent = "My Payslip Status";
+        paySlipStatus()
       break;
     case "late applicatoin":
       title.textContent = "Late Reasons";
@@ -236,10 +237,10 @@ function createAttendance(item) {
   const attendance_container_top_div = document.createElement("div");
   const attendance_container_bottom_div = document.createElement("div");
 
-  attendance_container_top_div.setAttribute("id", "topDiv");
-  attendance_container_top_div.setAttribute("class", "topDiv");
-  attendance_container_bottom_div.setAttribute("id", "bottomDiv");
-  attendance_container_bottom_div.setAttribute("class", "bottomDiv");
+  attendance_container_top_div.setAttribute("id", "attendanceTopDiv");
+  attendance_container_top_div.setAttribute("class", "attendanceTopDiv");
+  attendance_container_bottom_div.setAttribute("id", "attendanceBottomDiv");
+  attendance_container_bottom_div.setAttribute("class", "attendanceBottomDiv");
 
   const attendance_container_top_div_span_1 = document.createElement("span");
   const attendance_container_top_div_span_2 = document.createElement("span");
@@ -254,53 +255,56 @@ function createAttendance(item) {
   btn.setAttribute("class", "atndOkBtn");
   btn.textContent = "OK";
 
+
+  // Create a new Date object
+  const currentDate = new Date();
+  let currentMonthValue = currentDate.getMonth();
+  let currentMonth = currentDate.toLocaleString('default', { month: 'long' });
+  let currentYear = currentDate.getFullYear();
+
+  const currentDateTime = getDatesOfMonth(currentYear,currentMonthValue)
+  attendance_container_bottom_div.appendChild(showAttendanceStatus(currentDateTime))
  
-  let selectedMonth = "";
-  let selectedYear = "";
-  
- // Assuming monthList is a select element (dropdown)
-const monthList = document.getElementById("monthList");
-
-if(monthList){
-  // Get the currently selected month before onchange
-const currentSelectedMonth = monthList.value;
-console.log(monthList)
-}
-
 
   // Add onclick event handler
   btn.addEventListener("click", function () {
-    let selectedMonth = "";
-    let selectedYear = "";
     const monthList = document.getElementById("monthList");
     const yearList = document.getElementById("yearList");
-   
 
    
-    // Add your onclick functionality here
-    monthList.addEventListener("change", function(event) {
-       selectedMonth = event.target.value;
-      // Do something with the selected month
-      console.log("Selected month:", selectedMonth);
-    });
+      // monthList.addEventListener("change", function (event) {
+      //   currentMonth = yearList.value
+      // // console.log(monthList.value, allMonth);
+      // });
+
+      // yearList.addEventListener("change", function (event) {
+      //   currentYear = yearList.value; 
+      // });
+      
+      // Clear existing content in the container
+      attendance_container_bottom_div.innerHTML = '';
+
+      item[0].months.map((month,index)=>{
+        if(month === monthList.value){
+         const changedDateTime = getDatesOfMonth(parseInt(yearList.value),index)
+         attendance_container_bottom_div.appendChild(showAttendanceStatus(changedDateTime))
+        }
+      })
     
-    // Add event listener for yearList
-    yearList.addEventListener("change", function(event) {
-       selectedYear = event.target.value;
-      // Do something with the selected year
-      console.log("Selected year:", selectedYear);
-    });
   });
+
 
   attendance_container_top_div.appendChild(attendance_container_top_div_span_1);
   attendance_container_top_div.appendChild(attendance_container_top_div_span_2);
 
+
   attendance_container_top_div_span_1.appendChild(
-    createDropdown(item[0].months, "monthList")
+    createDropdown(item[0].months, "monthList",currentMonth)
   );
   attendance_container_top_div_span_1.appendChild(
-    createDropdown(item[1].years, "yearList")
+    createDropdown(item[1].years, "yearList",currentYear)
   );
+
   attendance_container_top_div_span_1.appendChild(btn);
 
   attendance_container.appendChild(attendance_container_top_div);
@@ -320,7 +324,7 @@ console.log(monthList)
 
     status_div.appendChild(status_paragraph_1);
     status_div.appendChild(status_paragraph_2);
-    
+
     if (statusText === "Absent" || statusText === "Late") {
       status_paragraph_1.style.color = "red";
       status_paragraph_2.style.color = "red";
@@ -329,15 +333,65 @@ console.log(monthList)
   });
 }
 
-function createDropdown(options, id) {
+function paySlipStatus(){
+  const container = document.getElementById("hrmActivityMain");
+  container.innerHTML = "";
+
+
+  const paySlipContainer = document.createElement("div")
+  paySlipContainer.setAttribute("id","paySlipContainer")
+  paySlipContainer.setAttribute("class","paySlipContainer")
+
+  const paySlipContainer_top_div = document.createElement("div")
+  paySlipContainer_top_div.setAttribute("id","paySlipTopDivContainer")
+  const paySlipContainer_middle_div = document.createElement("div")
+  paySlipContainer_middle_div.setAttribute("id","paySlipMiddleDivContainer")
+  const paySlipContainer_bottom_div = document.createElement("div")
+  paySlipContainer_bottom_div.setAttribute("id","paySlipBottomDivContainer")
+
+
+
+  paySlipContainer.appendChild(paySlipContainer_top_div)
+  paySlipContainer.appendChild(paySlipContainer_middle_div)
+  paySlipContainer.appendChild(paySlipContainer_bottom_div)
+
+  container.appendChild(paySlipContainer)
+}
+
+function showAttendanceStatus(dateInfo){
+  const attendanceStatus_div = document.createElement("div")
+  dateInfo.map((status)=>{
+    const attendanceStatus_span= document.createElement("span");
+    const attendanceStatus_text_1 = document.createElement("p")
+    const attendanceStatus_text_2 = document.createElement("p")
+   
+    attendanceStatus_text_1.textContent = status;
+    attendanceStatus_text_2.textContent = "Absent"
+    attendanceStatus_span.appendChild(attendanceStatus_text_1)
+    attendanceStatus_span.appendChild(attendanceStatus_text_2)
+    attendanceStatus_div.appendChild(attendanceStatus_span)
+   
+  })
+  return attendanceStatus_div;
+}
+
+
+
+
+function createDropdown(options, id,defaultValue) {
   const dropdown = document.createElement("select"); // Create select element
   dropdown.setAttribute("id", id); // Set id attribute
-
+  
   // Create and append option elements for each dropdown item
   options.forEach((option) => {
     const optionElement = document.createElement("option"); // Create option element
     optionElement.value = option; // Set value attribute
     optionElement.textContent = option; // Set text content
+
+    // Check if the current option matches the default value
+    if (option === defaultValue.toString()) {
+      optionElement.selected = true; // Set selected attribute if it matches
+    }
     dropdown.appendChild(optionElement); // Append option element to dropdown
   });
 
@@ -363,30 +417,25 @@ function getDatesOfMonth(year, month) {
     "Dec",
   ];
 
+  const weekdayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
   // Loop through each day of the month
   for (let day = 1; day <= daysInMonth; day++) {
     // Create a Date object for the current day
     const date = new Date(year, month, day);
 
     // Extract the day, month, and year from the Date object
+    const dayOfWeek = weekdayNames[date.getDay()];
     const dayOfMonth = date.getDate();
     // const monthOfYear = date.getMonth() + 1; // Months are zero-based, so add 1
     const monthName = monthNames[date.getMonth()];
     const yearOfDate = date.getFullYear();
 
     // Add the day, month, and year to the dates array
-    dates.push(`${dayOfMonth}/${monthName}/${yearOfDate}`);
+    dates.push(`${dayOfMonth}/${monthName}/${yearOfDate}/${dayOfWeek}`);
   }
 
   return dates;
 }
-
-// Example usage:
-const year = 2024;
-const month = 1; // 0 for January, 1 for February, and so on...
-const datesOfMonth = getDatesOfMonth(year, month);
-
-// console.log(datesOfMonth);
-
 
 

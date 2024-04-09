@@ -57,23 +57,26 @@ body {
     /* Allow it to grow to fill remaining space */
     overflow-y: auto;
     /* Allow vertical scrolling */
-    padding: 10px;
+    
 
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
-    padding-top: 5px;
+    padding-top: 10px;
 
     div {
+        width: 100%;
+
         button {
             padding: 10px 20px 10px 20px;
             cursor: pointer;
+            width: 100%;
 
             p {
                 font-size: 19px;
                 margin-top: 8px;
                 margin-bottom: 5px;
-                width: 150px;
+                /* width: 150px; */
                 text-transform: uppercase;
             }
         }
@@ -83,7 +86,8 @@ body {
 .hrmMain .odd-div {
     display: flex;
     flex-direction: row;
-    justify-content: end;
+    justify-content: center;
+
 }
 
 /*main section end here*/

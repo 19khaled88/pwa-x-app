@@ -5,9 +5,9 @@ body {
 .section-container {
     display: flex;
     flex-direction: column;
+    margin: 0 auto;
     /* height: 100vh; */
 }
-
 
 /*Top section start here*/
 
@@ -49,80 +49,121 @@ body {
 
 /*Top section end here*/
 
-
-
 /*main section start here*/
 .hrmActivityMain {
     /* Allow it to grow to fill remaining space */
     overflow-y: auto;
     /* Allow vertical scrolling */
-    padding: 10px;
 
     display: flex;
     flex-direction: column;
-    width: 90%;
-    margin: 40px auto;
-    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 40px auto 2px;
+
     padding-top: 5px;
 
     .attendanceContainer {
-        width: 50%;
-        margin: auto;
+        display: flex;
+        flex-direction: column;
+        width: 95%;
+        margin: 0 auto;
 
-        .topDiv {
+        height: 90vh;
+
+
+        .attendanceTopDiv {
             display: flex;
             flex-direction: column;
             width: 100%;
             border: 1px solid gray;
             padding: 5px;
             border-radius: 8px;
+
+            position: sticky;
+            top: 0;
+            z-index: 1;
+
             .topSpan {
                 display: flex;
                 flex-direction: row;
                 gap: 5px;
                 width: 100%;
-                
-                #monthList{
-                   width: 100%; 
-                   background-color: #C0C0C0;
-                }
-                #yearList{
+
+                #monthList {
                     width: 100%;
-                    background-color: #C0C0C0;
+                    background-color: #c0c0c0;
                 }
-                .atndOkBtn{
+
+                #yearList {
+                    width: 100%;
+                    background-color: #c0c0c0;
+                }
+
+                .atndOkBtn {
                     width: 25%;
-                    background-color: #C0C0C0;
+                    background-color: #c0c0c0;
                 }
             }
-            .bottomSpan{
+
+            .bottomSpan {
                 display: grid;
-                grid-template-columns: repeat(2,1fr);
-                
+                grid-template-columns: repeat(2, 1fr);
+
                 width: 100%;
-                div{
+
+                div {
                     padding-top: 10px;
                     color: gray;
-                    #status_title{
+
+                    #status_title {
                         padding-right: 5px;
                         margin: 3px 0 3px 0;
                     }
-                    #status_value{
+
+                    #status_value {
                         text-align: left;
                         width: 100%;
                         margin: 0;
                     }
                 }
             }
+        }
 
+        .attendanceBottomDiv {
+            width: 100%;
+            overflow: auto;
+
+            div {
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+                width: 100%;
+
+                padding-top: 10px;
+
+                span {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    align-items: center;
+                    width: 100%;
+
+                    p {
+                        margin: 5px 0 5px 0;
+                        color: white;
+                    }
+                }
+            }
         }
     }
 
     .policy-container {
-        width: 45%;
+        width: 100%;
         display: flex;
         flex-direction: column;
-        row-gap: 10px;
+        row-gap: 5px;
         justify-content: center;
         align-items: center;
         margin: auto;
@@ -138,11 +179,11 @@ body {
         }
 
         thead {
-            color: #FAF9F6;
+            color: #faf9f6;
         }
 
         tbody {
-            color: #C0C0C0;
+            color: #c0c0c0;
 
             tr {
                 td {
@@ -156,7 +197,6 @@ body {
                 td {
                     text-align: center;
                     color: red;
-
                 }
             }
         }
@@ -199,7 +239,5 @@ body {
         }
     }
 }
-
-
 
 /*main section end here*/
