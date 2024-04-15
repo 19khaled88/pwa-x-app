@@ -502,14 +502,27 @@ function payableAmountShow(){
       root_div.setAttribute("class","paySlipNavigationBtn")
       const paySlipContainer_bottom_div_second_div_left_button = document.createElement('button')
       const paySlipContainer_bottom_div_second_div_right_button = document.createElement('button')
-      const berichPayslip = document.createElement("div");
-      const befreshPayslip = document.createElement("div");
+     
+      
 
       paySlipContainer_bottom_div_second_div_left_button.textContent = 'Be Rich'
       paySlipContainer_bottom_div_second_div_right_button.textContent = 'Be Rich'
 
+    
+      const showPayslip = document.createElement("div");
+
       root_div.appendChild(paySlipContainer_bottom_div_second_div_left_button)
       root_div.appendChild(paySlipContainer_bottom_div_second_div_right_button)
+
+      paySlipContainer_bottom_div_second_div_left_button.addEventListener('click',function(){
+        root_div.innerHTML = ''
+        console.log('clicked left button')
+        root_div.appendChild(showPayslip)
+      })
+      paySlipContainer_bottom_div_second_div_right_button.addEventListener('click',function(){
+        root_div.innerHTML = ''
+        console.log('clicked right button')
+      })
       resolve(root_div);
     }).catch((error) => {
       reject(error);
