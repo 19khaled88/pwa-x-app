@@ -73,12 +73,14 @@
     "./assets/images/x-limited.png",
     "./assets/images/best_erp.png"
   ],
+
   "accounts": [
     {
       "image": "../assets/images/accounts/bill.png",
       "title": "Bill entry"
     }
   ],
+
   "hr_policy": [
     {
       "title": "attendance policy",
@@ -132,6 +134,7 @@
       "image": "../assets/images/paper-clip.png"
     }
   ],
+
   "holiday_list": [
     {
       "date": ["21/Feb/2024", "Wednesday"],
@@ -202,6 +205,7 @@
       "purpose": "Victory Day"
     }
   ],
+
   "attendance": [
     {
       "months": [
@@ -220,11 +224,40 @@
       ]
     },
     {
-      "years":[
-        "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017",
-        "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027",
-        "2028", "2029", "2030", "2031", "2032", "2033", "2034", "2035", "2036", "2037",
-        "2038", "2039", "2040"
+      "years": [
+        "2008",
+        "2009",
+        "2010",
+        "2011",
+        "2012",
+        "2013",
+        "2014",
+        "2015",
+        "2016",
+        "2017",
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024",
+        "2025",
+        "2026",
+        "2027",
+        "2028",
+        "2029",
+        "2030",
+        "2031",
+        "2032",
+        "2033",
+        "2034",
+        "2035",
+        "2036",
+        "2037",
+        "2038",
+        "2039",
+        "2040"
       ]
     },
     {
@@ -239,13 +272,110 @@
       ]
     },
     {
-      "status":[
-        "Present",
-        "DutyOff",
-        "Holiday",
-        "Absent",
-        "Leave",
-        "Late"
+      "status": ["Present", "DutyOff", "Holiday", "Absent", "Leave", "Late"]
+    }
+  ],
+
+  "dateTimeInfo": [
+    {
+      "months": [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December"
+      ]
+    },
+    {
+      "years": [
+        "2008",
+        "2009",
+        "2010",
+        "2011",
+        "2012",
+        "2013",
+        "2014",
+        "2015",
+        "2016",
+        "2017",
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024",
+        "2025",
+        "2026",
+        "2027",
+        "2028",
+        "2029",
+        "2030",
+        "2031",
+        "2032",
+        "2033",
+        "2034",
+        "2035",
+        "2036",
+        "2037",
+        "2038",
+        "2039",
+        "2040"
+      ]
+    },
+    {
+      "daysOfWeek": [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ]
+    },
+    {
+      "status": ["Present", "DutyOff", "Holiday", "Absent", "Leave", "Late"]
+    }
+  ],
+  "paySlipBreakDownTitle": [
+    {
+      "Be Rich": [
+        {
+          "Minimum Payment": 11050
+        },
+        {
+          "Adjustments": [
+            { "-Tax": 0 },
+            { "-Provident Fund": 0 },
+            { "-MSS": 0 },
+            { "-Loan": 0 },
+            { "+Others Add.": 2789 },
+            { "-Others Ded.": 0 }
+          ]
+        }
+      ],
+      "Be Fresh":[
+        {
+          "Minimum Payment": 11050
+        },
+        {
+          "Adjustments": [
+            { "-Tax": 0 },
+            { "-Provident Fund": 0 },
+            { "-MSS": 0 },
+            { "-Loan": 0 },
+            { "+Others Add.": 2789 },
+            { "-Others Ded.": 0 }
+          ]
+        }
       ]
     }
   ]

@@ -169,6 +169,98 @@ body {
         margin: auto;
     }
 
+    .paySlipContainer {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin: 0 auto;
+
+        .paySlipTopDivContainer {
+            width: 100%;
+
+            span {
+                display: flex;
+                flex-direction: row;
+                gap: 5px;
+                width: 100%;
+                border: 1px solid gray;
+                padding: 5px;
+                border-radius: 8px;
+
+                select {
+                    width: 100%;
+                    background-color: #c0c0c0;
+                }
+
+                .paySlicShowBtn {
+                    width: 25%;
+                    background-color: #c0c0c0;
+                }
+            }
+        }
+
+        .paySlipBottomDivContainer {
+            display: fle;
+            flex-direction: column;
+            width: 100%;
+
+            .paySlipBottomDivFirst {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+
+                div:first-child {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    font-size: 20px;
+                    padding-top: 15px;
+                    color: white;
+                    width: 100%;
+
+                    p {
+                        margin: 0;
+                    }
+                }
+
+                div:nth-child(2) {
+                    display: flex;
+                    flex-direction: column;
+                    width: 100%;
+                    background-color: deepskyblue;
+
+                    span {
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-between;
+                        width: 100%;
+
+                        color: white;
+
+                        p {
+                            margin: 8px;
+                            font-size: 18px;
+                        }
+                    }
+
+                    span:nth-child(3) {
+                        color: red;
+                    }
+                }
+            }
+
+            .paySlipBottomDivSecond {
+                padding-top: 2px;
+                gap: 2px;
+                width: 100%;
+
+                .paySlipNavigationBtn {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
     #annual_holiday_list {
         padding-top: 10px;
 

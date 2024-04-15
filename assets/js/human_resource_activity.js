@@ -51,7 +51,7 @@ if (pageTitle) {
       break;
     case "attendance":
       title.textContent = "My Attendence Status";
-      fetchHrData("attendance")
+      fetchHrData("dateTimeInfo")
         .then((result) => {
           createAttendance(result);
         })
@@ -61,7 +61,14 @@ if (pageTitle) {
       break;
     case "payslip":
       title.textContent = "My Payslip Status";
-        paySlipStatus()
+      fetchHrData("dateTimeInfo")
+        .then((result)=>{
+          paySlipStatus(result)
+        })
+        .catch((error)=>{
+
+        })
+        
       break;
     case "late applicatoin":
       title.textContent = "Late Reasons";
@@ -333,29 +340,183 @@ function createAttendance(item) {
   });
 }
 
-function paySlipStatus(){
+function paySlipStatus(item){
   const container = document.getElementById("hrmActivityMain");
+  const root_div = document.createElement('div')
   container.innerHTML = "";
 
+  // Create a new Date object
+  const currentDate = new Date();
+  let currentMonthValue = currentDate.getMonth();
+  let currentMonth = currentDate.toLocaleString('default', { month: 'long' });
+  let currentYear = currentDate.getFullYear();
 
-  const paySlipContainer = document.createElement("div")
-  paySlipContainer.setAttribute("id","paySlipContainer")
-  paySlipContainer.setAttribute("class","paySlipContainer")
-
-  const paySlipContainer_top_div = document.createElement("div")
-  paySlipContainer_top_div.setAttribute("id","paySlipTopDivContainer")
-  const paySlipContainer_middle_div = document.createElement("div")
-  paySlipContainer_middle_div.setAttribute("id","paySlipMiddleDivContainer")
-  const paySlipContainer_bottom_div = document.createElement("div")
-  paySlipContainer_bottom_div.setAttribute("id","paySlipBottomDivContainer")
-
+  const btn = document.createElement("button");
+  btn.setAttribute("id", "paySlicShowBtn");
+  btn.setAttribute("class", "paySlicShowBtn");
+  btn.textContent = "SHOW";
 
 
-  paySlipContainer.appendChild(paySlipContainer_top_div)
-  paySlipContainer.appendChild(paySlipContainer_middle_div)
-  paySlipContainer.appendChild(paySlipContainer_bottom_div)
+   // Add onclick event handler
+   btn.addEventListener('click',function(){
 
-  container.appendChild(paySlipContainer)
+    const monthList = document.getElementById("monthList");
+    const yearList = document.getElementById("yearList");
+    const selectedMonthNumber = monthList.selectedIndex;
+
+    
+    
+// Clear existing content in the container
+      paySlipContainer_bottom_div.innerHTML = '';
+      
+      if(selectedMonthNumber < currentMonthValue & parseInt(yearList.value) <= currentYear ){
+        
+        /*bottom div > first div > upper paragraph*/
+        paySlipContainer_bottom_div_first_div_upper_p_1.textContent = monthList.value + ' ' + yearList.value
+        paySlipContainer_bottom_div_first_div_upper_p_2.textContent = 'MD. KHALED AHASAN'
+        paySlipContainer_bottom_div_first_div_upper_p_3.textContent = 'Gross Salary'
+        paySlipContainer_bottom_div_first_div_upper_p_4.textContent = 26000
+        paySlipContainer_bottom_div_first_div_upper_p_5.textContent = 'Basic Salary'
+        paySlipContainer_bottom_div_first_div_upper_p_6.textContent =  13000
+        paySlipContainer_bottom_div_first_div_upper_p_7.textContent =  'Total Payment - This Month'
+        paySlipContainer_bottom_div_first_div_upper_p_8.textContent =  26000
+
+        /*bottom div > first div > upper child addition*/
+        paySlipContainer_bottom_div_first_div_upper.appendChild(paySlipContainer_bottom_div_first_div_upper_p_1)
+        paySlipContainer_bottom_div_first_div_upper.appendChild(paySlipContainer_bottom_div_first_div_upper_p_2)
+
+        /*bottom div > first div > upper > span child addition*/
+        paySlipContainer_bottom_div_first_div_upper_span_1.appendChild(paySlipContainer_bottom_div_first_div_upper_p_3)
+        paySlipContainer_bottom_div_first_div_upper_span_1.appendChild(paySlipContainer_bottom_div_first_div_upper_p_4)
+
+        paySlipContainer_bottom_div_first_div_upper_span_2.appendChild(paySlipContainer_bottom_div_first_div_upper_p_5)
+        paySlipContainer_bottom_div_first_div_upper_span_2.appendChild(paySlipContainer_bottom_div_first_div_upper_p_6)
+
+        paySlipContainer_bottom_div_first_div_upper_span_3.appendChild(paySlipContainer_bottom_div_first_div_upper_p_7)
+        paySlipContainer_bottom_div_first_div_upper_span_3.appendChild(paySlipContainer_bottom_div_first_div_upper_p_8)
+
+
+        /*bottom div > first div > lower child addition*/
+        paySlipContainer_bottom_div_first_div_lower.appendChild(paySlipContainer_bottom_div_first_div_upper_span_1)
+        paySlipContainer_bottom_div_first_div_lower.appendChild(paySlipContainer_bottom_div_first_div_upper_span_2)
+        paySlipContainer_bottom_div_first_div_lower.appendChild(paySlipContainer_bottom_div_first_div_upper_span_3)
+      
+        /*bottom div > first div child addition*/
+        paySlipContainer_bottom_div_first_div.appendChild(paySlipContainer_bottom_div_first_div_upper)
+        paySlipContainer_bottom_div_first_div.appendChild(paySlipContainer_bottom_div_first_div_lower)
+
+        /*bottom div > second div > show payable amount calculation*/
+        payableAmountShow().then((root_div)=>{
+          paySlipContainer_bottom_div_second_div.appendChild(root_div)
+        }).catch((error)=>{
+          console.error('Error:', error)
+        })
+
+        /*bottom div child addition*/
+        paySlipContainer_bottom_div.appendChild(paySlipContainer_bottom_div_first_div);
+        paySlipContainer_bottom_div.appendChild(paySlipContainer_bottom_div_second_div);
+      }
+   })
+
+  const paySlipContainer = document.createElement("div");
+  paySlipContainer.setAttribute("id","paySlipContainer");
+  paySlipContainer.setAttribute("class","paySlipContainer");
+
+  const paySlipContainer_top_div = document.createElement("div");
+  const paySlipContainer_top_div_span = document.createElement('span');
+  paySlipContainer_top_div.setAttribute("id","paySlipTopDivContainer");
+  paySlipContainer_top_div.setAttribute("class","paySlipTopDivContainer");
+  paySlipContainer_top_div.appendChild(paySlipContainer_top_div_span);
+
+  
+  paySlipContainer_top_div_span.appendChild(
+    createDropdown(item[0].months, "monthList",currentMonth)
+  )
+  paySlipContainer_top_div_span.appendChild(
+    createDropdown(item[1].years, "yearList",currentYear)
+  )
+  paySlipContainer_top_div_span.appendChild(btn);
+ 
+
+  const paySlipContainer_bottom_div = document.createElement("div");
+  paySlipContainer_bottom_div.setAttribute("id","paySlipBottomDivContainer");
+  paySlipContainer_bottom_div.setAttribute("class","paySlipBottomDivContainer");
+
+  const paySlipContainer_bottom_div_first_div = document.createElement("div");
+  paySlipContainer_bottom_div_first_div.setAttribute('id',"paySlipBottomDivFirst");
+  paySlipContainer_bottom_div_first_div.setAttribute('class',"paySlipBottomDivFirst");
+
+  const paySlipContainer_bottom_div_first_div_upper = document.createElement("div");
+
+  const paySlipContainer_bottom_div_first_div_upper_p_1 = document.createElement("p");
+  const paySlipContainer_bottom_div_first_div_upper_p_2 = document.createElement("p");
+  const paySlipContainer_bottom_div_first_div_upper_p_3 = document.createElement("p");
+  const paySlipContainer_bottom_div_first_div_upper_p_4 = document.createElement("p");
+  const paySlipContainer_bottom_div_first_div_upper_p_5 = document.createElement("p");
+  const paySlipContainer_bottom_div_first_div_upper_p_6 = document.createElement("p");
+  const paySlipContainer_bottom_div_first_div_upper_p_7 = document.createElement("p");
+  const paySlipContainer_bottom_div_first_div_upper_p_8 = document.createElement("p");
+  const paySlipContainer_bottom_div_first_div_upper_span_1 = document.createElement("span");
+  const paySlipContainer_bottom_div_first_div_upper_span_2 = document.createElement("span");
+  const paySlipContainer_bottom_div_first_div_upper_span_3 = document.createElement("span");
+
+  const paySlipContainer_bottom_div_first_div_lower = document.createElement("div");
+
+ 
+  const paySlipContainer_bottom_div_second_div = document.createElement("div");
+  paySlipContainer_bottom_div_second_div.setAttribute('id',"paySlipBottomDivSecond");
+  paySlipContainer_bottom_div_second_div.setAttribute('class',"paySlipBottomDivSecond");
+
+  paySlipContainer_bottom_div.appendChild(paySlipContainer_bottom_div_first_div);
+  paySlipContainer_bottom_div.appendChild(paySlipContainer_bottom_div_second_div);
+
+
+  paySlipContainer.appendChild(paySlipContainer_top_div);
+  paySlipContainer.appendChild(paySlipContainer_bottom_div);
+
+
+  container.appendChild(paySlipContainer);
+}
+
+function payableAmountShow(){
+  // fetchHrData("paySlipBreakDownTitle").then((response)=>{
+  //   const root_div = document.createElement('div')
+  //   const paySlipContainer_bottom_div_second_div_left_button = document.createElement('button')
+  //   const paySlipContainer_bottom_div_second_div_right_button = document.createElement('button')
+  //   paySlipContainer_bottom_div_second_div_left_button.textContent = 'Be Rich'
+  //   paySlipContainer_bottom_div_second_div_right_button.textContent = 'Be Rich'
+  
+  //   root_div.appendChild(paySlipContainer_bottom_div_second_div_left_button)
+  //   root_div.appendChild(paySlipContainer_bottom_div_second_div_right_button)
+  //   return  root_div 
+  // }).catch((error)=>{
+    
+  // })
+
+  return new Promise((resolve, reject) => {
+    fetchHrData("paySlipBreakDownTitle").then((response) => {
+
+      console.log(response)
+      const root_div = document.createElement('div')
+      root_div.setAttribute("id","paySlipNavigationBtn")
+      root_div.setAttribute("class","paySlipNavigationBtn")
+      const paySlipContainer_bottom_div_second_div_left_button = document.createElement('button')
+      const paySlipContainer_bottom_div_second_div_right_button = document.createElement('button')
+      const berichPayslip = document.createElement("div");
+      const befreshPayslip = document.createElement("div");
+
+      paySlipContainer_bottom_div_second_div_left_button.textContent = 'Be Rich'
+      paySlipContainer_bottom_div_second_div_right_button.textContent = 'Be Rich'
+
+      root_div.appendChild(paySlipContainer_bottom_div_second_div_left_button)
+      root_div.appendChild(paySlipContainer_bottom_div_second_div_right_button)
+      resolve(root_div);
+    }).catch((error) => {
+      reject(error);
+    });
+  });
+
+  
 }
 
 function showAttendanceStatus(dateInfo){
@@ -374,9 +535,6 @@ function showAttendanceStatus(dateInfo){
   })
   return attendanceStatus_div;
 }
-
-
-
 
 function createDropdown(options, id,defaultValue) {
   const dropdown = document.createElement("select"); // Create select element
