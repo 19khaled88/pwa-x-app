@@ -70,6 +70,12 @@ if (pageTitle) {
       break;
     case "late applicatoin":
       title.textContent = "Late Reasons";
+      fetchHrData("lateReasonTitle")
+        .then((result)=>{
+          lateApplication(result)
+        })
+        .catch((error)=>{})
+      
       break;
     case "leave application":
       title.textContent = "Leave Application";
@@ -434,7 +440,7 @@ function paySlipStatus(item) {
 
       /*bottom div > second div > show payable amount calculation*/
 
-      payableAmountShow()
+      payslipPayableAmountShow()
         .then((root_div) => {
           paySlipContainer_bottom_div_second_div.appendChild(root_div);
         })
@@ -539,7 +545,7 @@ function paySlipStatus(item) {
   container.appendChild(paySlipContainer);
 }
 
-function payableAmountShow() {
+function payslipPayableAmountShow() {
   return new Promise((resolve, reject) => {
     fetchHrData("paySlipBreakDownTitle")
       .then((response) => {
@@ -603,6 +609,152 @@ function payableAmountShow() {
         reject(error);
       });
   });
+}
+
+function lateApplication(items){
+  const container = document.getElementById("hrmActivityMain");
+  container.innerHTML = "";
+
+
+  const lateApplicationContainer = document.createElement("div");
+  const buttonContainer = document.createElement("div");
+  const reason_status_container = document.createElement('div');
+
+// Create buttons and attach event listener
+  const buttons = createLateApplyButton(items,function(data,key){
+    reason_status_container.innerHTML = "";
+    // Create a new div to display the clicked data
+    const lateAppData = document.createElement("div");
+    
+    
+    if(key === 'apply'){
+      const reasonDiv = document.createElement('div');
+      lateAppData.setAttribute("id","applyReason")
+      lateAppData.setAttribute("class","applyReason")
+      const reasonLabel = document.createElement('p');
+      const reasons = document.createElement('div');      
+      reasonLabel.textContent = 'Late Reason'
+      const submitBtn = document.createElement('button')
+      submitBtn.textContent = 'SUBMIT'
+      
+      data.forEach((option, index) => {
+        const span = document.createElement('span')
+        const radioButton = document.createElement('input'); // Create radio button element
+        radioButton.type = 'radio'; // Set type attribute
+        radioButton.name = 'options'; // Set name attribute (all radio buttons should have the same name to form a group)
+        radioButton.value = option; // Set value attribute
+        radioButton.id = `option${index + 1}`; // Set id attribute
+
+        const label = document.createElement('label'); // Create label element for the radio button
+        label.textContent = option; // Set label text
+        label.setAttribute('for', `option${index + 1}`); // Set "for" attribute to match radio button id
+
+        // Append radio button and label to the span
+        span.appendChild(radioButton);
+        span.appendChild(label);
+
+        reasons.appendChild(span); 
+      });
+    
+     
+      reasonDiv.appendChild(reasonLabel)
+      reasonDiv.appendChild(reasons)
+
+      const noteDiv = document.createElement('div');
+      const noteInput = document.createElement('input')
+      const noteLabel = document.createElement('p')
+      noteLabel.textContent = 'Note'
+      noteDiv.appendChild(noteLabel)
+      noteDiv.appendChild(noteInput)
+
+
+
+      lateAppData.appendChild(reasonDiv);
+      lateAppData.appendChild(noteDiv)
+      lateAppData.append(submitBtn)
+    }else if(key === 'view'){
+      const dateSelectDiv = document.createElement('div')
+      const statusDiv  = document.createElement('div')
+      lateAppData.setAttribute("id","viewStatus")
+      lateAppData.setAttribute("class","viewStatus")
+
+      // Get the current date
+      const currentDate = new Date();
+      const currentYear = currentDate.getFullYear();
+      const currentMonth = String(currentDate.getMonth() + 1).padStart(2, '0');
+      const currentDay = String(currentDate.getDate()).padStart(2, '0');
+      const formattedCurrentDate = `${currentDay}/${currentMonth}/${currentYear}`;
+
+      const startDatePickerInput = document.createElement('input');
+      startDatePickerInput.type = 'text';
+      startDatePickerInput.id = 'viewStartDate';
+      startDatePickerInput.name = 'viewStartDate';
+
+      startDatePickerInput.addEventListener('click',function(){
+        $( "#viewStartDate" ).datepicker();
+      })
+
+      const endDatePickerInput = document.createElement('input');
+      endDatePickerInput.type = 'text';
+      endDatePickerInput.id = 'viewEndDate';
+      endDatePickerInput.name = 'viewEndDate';
+
+      endDatePickerInput.addEventListener('click',function(){
+        $( "#viewEndDate" ).datepicker();
+      })
+
+      const viewBtn = document.createElement("button");
+      viewBtn.setAttribute("id", "viewBtn");
+      viewBtn.setAttribute("class", "viewBtn");
+      viewBtn.textContent = "OK";
+      
+      dateSelectDiv.appendChild(startDatePickerInput);
+      dateSelectDiv.appendChild(endDatePickerInput);
+      dateSelectDiv.appendChild(viewBtn);
+
+      lateAppData.appendChild(dateSelectDiv);
+      lateAppData.appendChild(statusDiv)
+
+    }
+
+    
+
+    // Append the data div to the lateApplicationContainer
+    reason_status_container.appendChild(lateAppData);
+  })
+ 
+
+  lateApplicationContainer.setAttribute("id","lateApplicatonContainer");
+  lateApplicationContainer.setAttribute("class","lateApplicatonContainer");
+  buttonContainer.setAttribute("id","buttonContainer");
+  buttonContainer.setAttribute("class","buttonContainer");
+  reason_status_container.setAttribute("id","reason_status_container");
+  reason_status_container.setAttribute("class","reason_status_container");
+
+  buttonContainer.appendChild(buttons);
+
+  lateApplicationContainer.appendChild(buttonContainer);
+  lateApplicationContainer.appendChild(reason_status_container);
+  container.appendChild(lateApplicationContainer);
+
+}
+
+function createLateApplyButton(elements,callback){
+  const buttonContainer = document.createElement("div");
+  
+ for(let element in elements){
+    const button = document.createElement("button");
+    button.textContent = element;
+    
+    button.addEventListener('click',function(){
+
+      callback(elements[element],element);
+    })
+
+    buttonContainer.appendChild(button);
+ }
+  
+  return buttonContainer;
 }
 
 function showAttendanceStatus(dateInfo) {
@@ -688,3 +840,15 @@ function getDatesOfMonth(year, month) {
 
   return dates;
 }
+
+
+$(document).ready(function() {
+  // Select an element by its ID and perform actions
+  $("#viewBtn").click(function() {
+      // Action to perform when the button is clicked
+      alert("Button clicked!");
+  });
+
+  // Select another element by its ID and perform actions
+  $("#myDiv").text("New content for the div");
+});

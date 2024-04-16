@@ -361,7 +361,7 @@
         ]
       }
     ],
-    "Be Fresh":[
+    "Be Fresh": [
       {
         "Minimum Payment": 11060
       },
@@ -376,5 +376,15 @@
         ]
       }
     ]
+  },
+  "lateReasonTitle": {
+    "apply": [
+      "Family Issue",
+      "Sickness",
+      "Official Issues",
+      "Weather Issues",
+      "Political Issues"
+    ],
+    "view": ["Date/Time", "Status", "Reason", "Note"]
   }
 }
