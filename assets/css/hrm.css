@@ -68,12 +68,12 @@ body {
         width: 100%;
 
         button {
-            padding: 10px 20px 10px 20px;
+            /* padding: 10px 20px 10px 20px; */
             cursor: pointer;
             width: 100%;
 
             p {
-                font-size: 19px;
+                font-size: 12px;
                 margin-top: 8px;
                 margin-bottom: 5px;
                 /* width: 150px; */
