@@ -345,38 +345,36 @@
       "status": ["Present", "DutyOff", "Holiday", "Absent", "Leave", "Late"]
     }
   ],
-  "paySlipBreakDownTitle": [
-    {
-      "Be Rich": [
-        {
-          "Minimum Payment": 11050
-        },
-        {
-          "Adjustments": [
-            { "-Tax": 0 },
-            { "-Provident Fund": 0 },
-            { "-MSS": 0 },
-            { "-Loan": 0 },
-            { "+Others Add.": 2789 },
-            { "-Others Ded.": 0 }
-          ]
-        }
-      ],
-      "Be Fresh":[
-        {
-          "Minimum Payment": 11050
-        },
-        {
-          "Adjustments": [
-            { "-Tax": 0 },
-            { "-Provident Fund": 0 },
-            { "-MSS": 0 },
-            { "-Loan": 0 },
-            { "+Others Add.": 2789 },
-            { "-Others Ded.": 0 }
-          ]
-        }
-      ]
-    }
-  ]
+  "paySlipBreakDownTitle": {
+    "Be Rich": [
+      {
+        "Minimum Payment": 11050
+      },
+      {
+        "Adjustments": [
+          { "-Tax": 0 },
+          { "-Provident Fund": 0 },
+          { "-MSS": 0 },
+          { "-Loan": 0 },
+          { "+Others Add.": 2780 },
+          { "-Others Ded.": 0 }
+        ]
+      }
+    ],
+    "Be Fresh":[
+      {
+        "Minimum Payment": 11060
+      },
+      {
+        "Adjustments": [
+          { "-Tax": 0 },
+          { "-Provident Fund": 0 },
+          { "-MSS": 0 },
+          { "-Loan": 0 },
+          { "+Others Add.": 2781 },
+          { "-Others Ded.": 0 }
+        ]
+      }
+    ]
+  }
 }
