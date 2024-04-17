@@ -1,6 +1,6 @@
 function routeToPage(path, classInfo,dataTitle) {
   const url = `${path}?class_name=${encodeURIComponent(classInfo)}&data_title=${encodeURIComponent(dataTitle)}`;
-
+ 
   window.location.href = url;
 }
 

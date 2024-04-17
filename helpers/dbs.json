@@ -386,5 +386,104 @@
       "Political Issues"
     ],
     "view": ["Date/Time", "Status", "Reason", "Note"]
+  },
+  "Bill_entry":{
+    "Entry":{
+      "Company":[
+        "Be Rich Limited",
+        "Be Fresh Limited",
+        "01 Limited",
+        "Testing company"
+      ],
+      "Bill Type":[
+        "MEDICAL BILL",
+        "TRAVEL BILL",
+        "ENTERTAINMENT BILL",
+        "MISCELLANEOUS BILL",
+        "LOCAL CONVEYANCE BILL",
+        "PETTY CASH",
+        "DIRECTORS EXPENSES",
+        "COMMUNICATION EXPENSES",
+        "PRINTING & STATIONERY EXPENSES",
+        "LEGAL & STATUTORY EXPENSES",
+        "BANK CHARGE",
+        "ADVERTISEMENT EXPENSES",
+        "REPAIR & MAINTENANCE",
+        "BUSINESS DEVELOPMENT",
+        "POSTAGE & TELEGRAM",
+        "LOAN PAYMENT"
+      ]
+    },
+    "view":{
+      "Company":[
+        "ALL COMPANY",
+        "Be Rich Limited",
+        "Be Fresh Limited",
+        "01 Limited",
+        "Testing company"
+      ],
+      "ALL Type":[
+        "ALL TYPE",
+        "MEDICAL BILL",
+        "TRAVEL BILL",
+        "ENTERTAINMENT BILL",
+        "MISCELLANEOUS BILL",
+        "LOCAL CONVEYANCE BILL",
+        "PETTY CASH",
+        "DIRECTORS EXPENSES",
+        "COMMUNICATION EXPENSES",
+        "PRINTING & STATIONERY EXPENSES",
+        "LEGAL & STATUTORY EXPENSES",
+        "BANK CHARGE",
+        "ADVERTISEMENT EXPENSES",
+        "REPAIR & MAINTENANCE",
+        "BUSINESS DEVELOPMENT",
+        "POSTAGE & TELEGRAM",
+        "LOAN PAYMENT"
+      ],
+      "ALL STATUS":[
+        "ALL STATUS",
+        "PENDING",
+        "CHECKED",
+        "PAID",
+        "CANCELLED"
+      ]
+    },
+    "Approval":{
+      "Company":[
+        "ALL COMPANY",
+        "Be Rich Limited",
+        "Be Fresh Limited",
+        "01 Limited",
+        "Testing company"
+      ],
+      "ALL Type":[
+        "ALL TYPE",
+        "MEDICAL BILL",
+        "TRAVEL BILL",
+        "ENTERTAINMENT BILL",
+        "MISCELLANEOUS BILL",
+        "LOCAL CONVEYANCE BILL",
+        "PETTY CASH",
+        "DIRECTORS EXPENSES",
+        "COMMUNICATION EXPENSES",
+        "PRINTING & STATIONERY EXPENSES",
+        "LEGAL & STATUTORY EXPENSES",
+        "BANK CHARGE",
+        "ADVERTISEMENT EXPENSES",
+        "REPAIR & MAINTENANCE",
+        "BUSINESS DEVELOPMENT",
+        "POSTAGE & TELEGRAM",
+        "LOAN PAYMENT"
+      ],
+      "ALL STATUS":[
+        "ALL STATUS",
+        "PENDING",
+        "CHECKED",
+        "PAID",
+        "CANCELLED"
+      ]
+    }
   }
+
 }

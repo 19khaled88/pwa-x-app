@@ -9,9 +9,10 @@ async function fetchData() {
     const data = await response.text();
     const parsedData = JSON.parse(data);
 
-    
+   
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
+   
     const receivedClassName = urlParams.get("class_name");
     const receivedDataTitle = urlParams.get("data_title");
     
@@ -19,7 +20,7 @@ async function fetchData() {
     container.innerHTML = "";
 
     parsedData[receivedDataTitle].map((item, index) => {
-      container.appendChild(createButton(item, index));
+      container.appendChild(createButton(item, index,parsedData));
     });
   } catch (error) {
     console.error("There was a problem with the fetch operation:", error);
@@ -28,7 +29,7 @@ async function fetchData() {
 
 fetchData();
 
-function createButton(item, index) {
+function createButton(item, index,parsedData) {
   const div = document.createElement("div"); // Create a div element
   const itemBtn = document.createElement("button"); // Create a button element
   const itemImg = document.createElement("img");
@@ -64,15 +65,20 @@ function createButton(item, index) {
 
 
   itemBtn.addEventListener("click", function() {
-    
     // navigateToPage(item.title);
-    routeToPage('../pages/HumanResourceActivity.html','',item.title)
+
+    for(let items in parsedData){
+      const isExist = (items === 'hrmIcon' || items === 'accounts') && parsedData[items].some((element)=>element.title === item.title)
+      if(isExist == true && items === 'hrmIcon'){
+        routeToPage('../pages/HumanResourceActivity.html','',item.title)
+      } else if(isExist == true && items === 'accounts'){
+        routeToPage('../pages/AccountActivity.html','',item.title)
+      }
+      
+    } 
+    // routeToPage('../pages/HumanResourceActivity.html','',item.title)
   });
-
-
-
   return div; // Return the div element containing the button
-
 }
 
 
