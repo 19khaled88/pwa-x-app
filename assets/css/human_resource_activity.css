@@ -329,7 +329,16 @@ body {
             div {
                 width: 100%;
                 gap: 2px;
+                button{
+                    text-transform: uppercase;
+                }
+                button.active{
+                    border: none; /* Remove default border */
+                    border-bottom: 2px solid #dc3737; /* Set bottom border color */
+                    color: #dc3737; /* Set the text color */
+                }
             }
+
         }
 
         .reason_status_container {
@@ -350,15 +359,30 @@ body {
                     p {
                         margin: 0;
                         flex: 1;
+                        
                     }
 
                     div {
+                        display: flex;
                         flex-direction: column;
                         flex: 2;
                         gap: 8px;
 
-                        span {
+                        span{
+                            display: flex;
+                            flex-direction: row;
+                            gap: 8px;
+                            align-items: center;
+                            
                             width: 100%;
+                            input{
+                                height: auto;
+                                width: 5%;
+                                margin: 0 0 0 4px;
+                            }
+                            label{
+                                width: 95%;
+                            }
                         }
                     }
 
@@ -377,6 +401,7 @@ body {
                     input {
                         flex: 2;
                         margin-left: 8px;
+                        height: 20px;
                     }
                 }
 
@@ -396,7 +421,7 @@ body {
                     gap: 3px;
                     input {
                         flex: 2;
-                        height: 100%;
+                        height: 30px;
                         width: 100%;
                         box-sizing: border-box;
                     }
@@ -404,6 +429,63 @@ body {
                     button {
                         flex: 1;
                         padding: 3px;
+                        height: 30px;
+                    }
+                }
+
+                div:nth-child(2){
+                    flex-direction: column;
+
+                    width: 100%;
+                    span:nth-child(1){
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: center;
+                        width: 100%;  
+                        color: blue; 
+                       
+                    }
+                    span:nth-child(2){
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-between;
+                        align-items: center;
+                        width: 100%;  
+                        padding-bottom: 8px;
+                        p{
+                            padding-left: 5px;
+                        }
+                        p{
+                            flex: 1;
+                            margin: 0 auto;
+                            flex-direction: row;
+                            font-size: 20px;
+                            color: white;
+                        }
+                        input{
+                            flex: 2;
+                            height: 30px;
+                        }
+                    }
+                    table{
+                        width: 100%;
+                        border-collapse: collapse;
+                        
+                        thead{
+                            color: white;
+                           
+                            tr:nth-child(2){
+                               flex-direction: row;                               
+                               align-items: flex-start;
+                               background-color: #454549;
+                               width: 100%;
+                               th{
+                                padding: 8px 0 8px 5px;
+
+                                text-align: left;
+                               }
+                            }
+                        }
                     }
                 }
             }

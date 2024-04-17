@@ -71,11 +71,11 @@ if (pageTitle) {
     case "late applicatoin":
       title.textContent = "Late Reasons";
       fetchHrData("lateReasonTitle")
-        .then((result)=>{
-          lateApplication(result)
+        .then((result) => {
+          lateApplication(result);
         })
-        .catch((error)=>{})
-      
+        .catch((error) => {});
+
       break;
     case "leave application":
       title.textContent = "Leave Application";
@@ -560,13 +560,13 @@ function payslipPayableAmountShow() {
           button.addEventListener("click", function () {
             console.log(`${items}`);
             pay_adjust_container.innerHTML = ""; // Clear the container
-        
+
             response[items].forEach((item) => {
-              const div = document.createElement('div');
+              const div = document.createElement("div");
               const span = document.createElement("span");
               const paragraph1 = document.createElement("p");
               const paragraph2 = document.createElement("p");
-              
+
               for (let itm in item) {
                 if (itm === "Minimum Payment") {
                   paragraph1.textContent = itm;
@@ -586,15 +586,11 @@ function payslipPayableAmountShow() {
                       adjustmentSpan.appendChild(adjustmentParagraph2);
                     }
                     div.appendChild(adjustmentSpan); // Append the adjustmentSpan to the main span
-                    
                   });
-                 
                 }
               }
               pay_adjust_container.appendChild(span); // Append the span to the container
               pay_adjust_container.appendChild(div); // Append the span to the container
-              
-              
             });
           });
           button_container.appendChild(button);
@@ -611,149 +607,202 @@ function payslipPayableAmountShow() {
   });
 }
 
-function lateApplication(items){
+function lateApplication(items) {
   const container = document.getElementById("hrmActivityMain");
   container.innerHTML = "";
 
-
   const lateApplicationContainer = document.createElement("div");
   const buttonContainer = document.createElement("div");
-  const reason_status_container = document.createElement('div');
+  const reason_status_container = document.createElement("div");
 
-// Create buttons and attach event listener
-  const buttons = createLateApplyButton(items,function(data,key){
+  // Create buttons and attach event listener
+  const buttons = createLateApplyButton(items, function (data, key) {
     reason_status_container.innerHTML = "";
     // Create a new div to display the clicked data
     const lateAppData = document.createElement("div");
-    
-    
-    if(key === 'apply'){
-      const reasonDiv = document.createElement('div');
-      lateAppData.setAttribute("id","applyReason")
-      lateAppData.setAttribute("class","applyReason")
-      const reasonLabel = document.createElement('p');
-      const reasons = document.createElement('div');      
-      reasonLabel.textContent = 'Late Reason'
-      const submitBtn = document.createElement('button')
-      submitBtn.textContent = 'SUBMIT'
-      
+
+    if (key === "apply") {
+      const reasonDiv = document.createElement("div");
+      lateAppData.setAttribute("id", "applyReason");
+      lateAppData.setAttribute("class", "applyReason");
+      const reasonLabel = document.createElement("p");
+      const reasons = document.createElement("div");
+      reasonLabel.textContent = "Late Reason";
+      const submitBtn = document.createElement("button");
+      submitBtn.textContent = "SUBMIT";
+
       data.forEach((option, index) => {
-        const span = document.createElement('span')
-        const radioButton = document.createElement('input'); // Create radio button element
-        radioButton.type = 'radio'; // Set type attribute
-        radioButton.name = 'options'; // Set name attribute (all radio buttons should have the same name to form a group)
+        const span = document.createElement("span");
+        const radioButton = document.createElement("input"); // Create radio button element
+        radioButton.type = "radio"; // Set type attribute
+        radioButton.name = "options"; // Set name attribute (all radio buttons should have the same name to form a group)
         radioButton.value = option; // Set value attribute
         radioButton.id = `option${index + 1}`; // Set id attribute
 
-        const label = document.createElement('label'); // Create label element for the radio button
+        const label = document.createElement("label"); // Create label element for the radio button
         label.textContent = option; // Set label text
-        label.setAttribute('for', `option${index + 1}`); // Set "for" attribute to match radio button id
+        label.setAttribute("for", `option${index + 1}`); // Set "for" attribute to match radio button id
 
         // Append radio button and label to the span
         span.appendChild(radioButton);
         span.appendChild(label);
 
-        reasons.appendChild(span); 
+        reasons.appendChild(span);
+
+        // Check the first radio button by default
+        if (index === 0) {
+          radioButton.checked = true;
+        }
       });
-    
-     
-      reasonDiv.appendChild(reasonLabel)
-      reasonDiv.appendChild(reasons)
 
-      const noteDiv = document.createElement('div');
-      const noteInput = document.createElement('input')
-      const noteLabel = document.createElement('p')
-      noteLabel.textContent = 'Note'
-      noteDiv.appendChild(noteLabel)
-      noteDiv.appendChild(noteInput)
+      reasonDiv.appendChild(reasonLabel);
+      reasonDiv.appendChild(reasons);
 
-
+      const noteDiv = document.createElement("div");
+      const noteInput = document.createElement("input");
+      const noteLabel = document.createElement("p");
+      noteLabel.textContent = "Note";
+      noteDiv.appendChild(noteLabel);
+      noteDiv.appendChild(noteInput);
 
       lateAppData.appendChild(reasonDiv);
-      lateAppData.appendChild(noteDiv)
-      lateAppData.append(submitBtn)
-    }else if(key === 'view'){
-      const dateSelectDiv = document.createElement('div')
-      const statusDiv  = document.createElement('div')
-      lateAppData.setAttribute("id","viewStatus")
-      lateAppData.setAttribute("class","viewStatus")
+      lateAppData.appendChild(noteDiv);
+      lateAppData.append(submitBtn);
+    } else if (key === "view") {
+      const dateSelectDiv = document.createElement("div");
+      dateSelectDiv.setAttribute("id", "selectDate");
+      const statusDiv = document.createElement("div");
+      lateAppData.setAttribute("id", "viewStatus");
+      lateAppData.setAttribute("class", "viewStatus");
 
       // Get the current date
       const currentDate = new Date();
       const currentYear = currentDate.getFullYear();
-      const currentMonth = String(currentDate.getMonth() + 1).padStart(2, '0');
-      const currentDay = String(currentDate.getDate()).padStart(2, '0');
-      const formattedCurrentDate = `${currentDay}/${currentMonth}/${currentYear}`;
+      const currentMonth = String(currentDate.getMonth() + 1).padStart(2, "0");
+      const monthName = currentDate.toLocaleString("default", { month: "short", });
+      const currentDay = String(currentDate.getDate()).padStart(2, "0");
+      const formattedCurrentDate = `${currentDay}/${monthName}/${currentYear}`;
 
-      const startDatePickerInput = document.createElement('input');
-      startDatePickerInput.type = 'text';
-      startDatePickerInput.id = 'viewStartDate';
-      startDatePickerInput.name = 'viewStartDate';
+      const startDatePickerInput = document.createElement("input");
+      startDatePickerInput.type = "text";
+      startDatePickerInput.id = "viewStartDate";
+      startDatePickerInput.name = "viewStartDate";
+      startDatePickerInput.value = formattedCurrentDate;
+      $(startDatePickerInput).datepicker({ 
+        dateFormat: "dd/mm/yy",
+        onSelect: function(selectedDate) {
+          const dateObject = $.datepicker.parseDate("dd/mm/yy", selectedDate);
+          const shortMonthName = $.datepicker.formatDate("dd/M/yy", dateObject);
+          startDatePickerInput.value = shortMonthName;
+      } 
+       });
 
-      startDatePickerInput.addEventListener('click',function(){
-        $( "#viewStartDate" ).datepicker();
-      })
+      const endDatePickerInput = document.createElement("input");
+      endDatePickerInput.type = "text";
+      endDatePickerInput.id = "viewEndDate";
+      endDatePickerInput.name = "viewEndDate";
+      endDatePickerInput.value = formattedCurrentDate;
+      $(endDatePickerInput).datepicker({ 
+        dateFormat: "dd/mm/yy",
+          onSelect: function(selectedDate) {
+            const dateObject = $.datepicker.parseDate("dd/mm/yy", selectedDate);
+            const shortMonthName = $.datepicker.formatDate("dd/M/yy", dateObject);
+            endDatePickerInput.value = shortMonthName;
+        } 
+      });
 
-      const endDatePickerInput = document.createElement('input');
-      endDatePickerInput.type = 'text';
-      endDatePickerInput.id = 'viewEndDate';
-      endDatePickerInput.name = 'viewEndDate';
-
-      endDatePickerInput.addEventListener('click',function(){
-        $( "#viewEndDate" ).datepicker();
-      })
-
+      
       const viewBtn = document.createElement("button");
       viewBtn.setAttribute("id", "viewBtn");
       viewBtn.setAttribute("class", "viewBtn");
       viewBtn.textContent = "OK";
-      
+
+      const selectedDateSpan = document.createElement("span");
+      const dateTitle = document.createElement("p");
+      const selectedDateRange = document.createElement("p");
+      selectedDateRange.textContent = ` ${
+        " " + formattedCurrentDate + " - " + formattedCurrentDate
+      }`;
+      dateTitle.textContent = "Date : ";
+
+      viewBtn.addEventListener('click',function(){
+        selectedDateRange.textContent = ` ${
+          " " + startDatePickerInput.value + " - " + endDatePickerInput.value
+        }`;
+      })
+
+      const employeeSpan = document.createElement("span");
+      const employeeTitle = document.createElement("p");
+      employeeTitle.textContent = "Employee : ";
+      const employeeName = document.createElement("input");
+      employeeName.type = "text";
+      employeeName.id = "employeeName";
+      employeeName.name = "employeeName";
+      employeeName.value = "MD. KHALED AHASAN";
+
+      employeeSpan.appendChild(employeeTitle);
+      employeeSpan.appendChild(employeeName);
+
+      const table = createTable("", data, []);
+
+      selectedDateSpan.appendChild(dateTitle);
+      selectedDateSpan.appendChild(selectedDateRange);
+      statusDiv.appendChild(selectedDateSpan);
+      statusDiv.appendChild(employeeSpan);
+      statusDiv.appendChild(table);
+
       dateSelectDiv.appendChild(startDatePickerInput);
       dateSelectDiv.appendChild(endDatePickerInput);
       dateSelectDiv.appendChild(viewBtn);
 
       lateAppData.appendChild(dateSelectDiv);
-      lateAppData.appendChild(statusDiv)
-
+      lateAppData.appendChild(statusDiv);
     }
-
-    
 
     // Append the data div to the lateApplicationContainer
     reason_status_container.appendChild(lateAppData);
-  })
- 
+  });
 
-  lateApplicationContainer.setAttribute("id","lateApplicatonContainer");
-  lateApplicationContainer.setAttribute("class","lateApplicatonContainer");
-  buttonContainer.setAttribute("id","buttonContainer");
-  buttonContainer.setAttribute("class","buttonContainer");
-  reason_status_container.setAttribute("id","reason_status_container");
-  reason_status_container.setAttribute("class","reason_status_container");
+  lateApplicationContainer.setAttribute("id", "lateApplicatonContainer");
+  lateApplicationContainer.setAttribute("class", "lateApplicatonContainer");
+  buttonContainer.setAttribute("id", "buttonContainer");
+  buttonContainer.setAttribute("class", "buttonContainer");
+  reason_status_container.setAttribute("id", "reason_status_container");
+  reason_status_container.setAttribute("class", "reason_status_container");
 
   buttonContainer.appendChild(buttons);
 
   lateApplicationContainer.appendChild(buttonContainer);
   lateApplicationContainer.appendChild(reason_status_container);
   container.appendChild(lateApplicationContainer);
-
 }
 
-function createLateApplyButton(elements,callback){
+function createLateApplyButton(elements, callback) {
   const buttonContainer = document.createElement("div");
-  
- for(let element in elements){
+
+  for (let element in elements) {
     const button = document.createElement("button");
     button.textContent = element;
-    
-    button.addEventListener('click',function(){
 
-      callback(elements[element],element);
-    })
+    button.addEventListener("click", function () {
 
+      // Remove active class from all buttons
+      buttonContainer.querySelectorAll("button").forEach((btn) => {
+        btn.classList.remove("active");
+      });
+
+      // Add active class to the clicked button
+      button.classList.add("active");
+
+      callback(elements[element], element);
+    });
+
+    if (element === "apply") {
+      button.click();
+    }
     buttonContainer.appendChild(button);
- }
-  
+  }
+
   return buttonContainer;
 }
 
@@ -841,14 +890,36 @@ function getDatesOfMonth(year, month) {
   return dates;
 }
 
+function createTable(tableTitle, headerData, bodyData) {
+  // Create a new table element
+  const table = document.createElement("table");
 
-$(document).ready(function() {
-  // Select an element by its ID and perform actions
-  $("#viewBtn").click(function() {
-      // Action to perform when the button is clicked
-      alert("Button clicked!");
+  // Create the table title
+  const titleRow = table.createTHead().insertRow();
+  const titleCell = titleRow.insertCell();
+  titleCell.textContent = tableTitle;
+  titleCell.colSpan = headerData.length; // Set colspan to span the entire header
+
+  // Create the table header
+  const headerRow = table.createTHead().insertRow();
+  headerData.forEach((headerText) => {
+    const headerCell = document.createElement("th");
+    headerCell.textContent = headerText;
+    headerRow.appendChild(headerCell);
   });
 
-  // Select another element by its ID and perform actions
-  $("#myDiv").text("New content for the div");
-});
+  // Create the table body
+  const tbody = table.createTBody();
+  bodyData.forEach((rowData) => {
+    const row = tbody.insertRow();
+    rowData.forEach((cellData) => {
+      const cell = row.insertCell();
+      cell.textContent = cellData;
+    });
+  });
+
+  // Append the table to a parent container in the HTML document
+  // document.body.appendChild(table);
+  return table;
+}
+
