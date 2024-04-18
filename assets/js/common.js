@@ -12,3 +12,33 @@ async function fetchHrData(heading) {
       console.error("There was a problem with the fetch operation:", error);
     }
   }
+
+  function createNavigationButton(elements, callback){
+    const buttonContainer = document.createElement("div");  
+    
+    for (let element in elements) {
+        const button = document.createElement("button");
+        button.textContent = element;
+    
+        button.addEventListener("click", function () {
+    
+          // Remove active class from all buttons
+          buttonContainer.querySelectorAll("button").forEach((btn) => {
+            btn.classList.remove("active");
+          });
+    
+          // Add active class to the clicked button
+          button.classList.add("active");
+    
+          callback(elements[element], element);
+        });
+    
+        if (element === "Entry") {
+          button.click();
+        }
+        buttonContainer.appendChild(button);
+      }
+    
+      return buttonContainer;
+    }
+

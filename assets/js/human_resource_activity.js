@@ -762,6 +762,7 @@ function lateApplication(items) {
     // Append the data div to the lateApplicationContainer
     reason_status_container.appendChild(lateAppData);
   });
+  
 
   lateApplicationContainer.setAttribute("id", "lateApplicatonContainer");
   lateApplicationContainer.setAttribute("class", "lateApplicatonContainer");

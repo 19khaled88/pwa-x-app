@@ -389,6 +389,11 @@
   },
   "Bill_entry":{
     "Entry":{
+      "short_title":[
+        "Bill Ref",
+        "Date",
+        "Time"
+      ],
       "Company":[
         "Be Rich Limited",
         "Be Fresh Limited",
@@ -412,6 +417,21 @@
         "BUSINESS DEVELOPMENT",
         "POSTAGE & TELEGRAM",
         "LOAN PAYMENT"
+      ],
+      "Bill date":[
+
+      ],
+      "Purpose":[
+
+      ],
+      "Bill For":[
+        "SELF"
+      ],
+      "Note":[
+
+      ],
+      "Amount(Tk)":[
+
       ]
     },
     "view":{
