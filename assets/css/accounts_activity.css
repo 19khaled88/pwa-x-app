@@ -44,3 +44,69 @@ body {
         }
     }
 }
+
+.accountsctivityMain {
+    /* Allow it to grow to fill remaining space */
+    overflow-y: auto;
+    /* Allow vertical scrolling */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 40px auto 2px;
+    padding-top: 5px;
+
+    .bill_entry_container {
+        width: 100%;
+
+        .bill_entry_button_container {
+            width: 100%;
+
+            div {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                width: 100%;
+
+                button {
+                    flex: 1;
+                    height: 25px;
+                    text-transform: uppercase;
+                    padding: 0;
+                    margin: 0;
+                    border: none;
+                }
+
+                button.active {
+                    border: none;
+                    border-bottom: 1px solid #dc3737;
+                    padding: 0;
+                    color: #dc3737;
+                }
+            }
+        }
+
+        .bill_entry_details_container {
+            .entry_container_top {
+                display: flex;
+                flex-direction: row;
+                justify-content: stretch;
+                align-items: center;
+
+                span {
+                    display: flex;
+                    flex-direction: row;
+                    flex: 1;
+                }
+
+
+                p {
+                    margin: 0;
+                    border: 1px solid gray;
+                }
+            }
+        }
+    }
+}

@@ -330,12 +330,19 @@ body {
                 width: 100%;
                 gap: 2px;
                 button{
+                    flex: 1;
+                    height: 25px;
                     text-transform: uppercase;
+                    padding: 0;
+                    margin: 0;
+                    border: none;
+                    
                 }
                 button.active{
                     border: none; /* Remove default border */
-                    border-bottom: 2px solid #dc3737; /* Set bottom border color */
+                    border-bottom: 1px solid #dc3737; /* Set bottom border color */
                     color: #dc3737; /* Set the text color */
+                    padding: 0;
                 }
             }
 
