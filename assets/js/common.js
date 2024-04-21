@@ -13,7 +13,7 @@ async function fetchHrData(heading) {
     }
   }
 
-  function createNavigationButton(elements, callback){
+  function createNavigationButton(elements, activeElement,callback){
     const buttonContainer = document.createElement("div");  
     
     for (let element in elements) {
@@ -33,7 +33,7 @@ async function fetchHrData(heading) {
           callback(elements[element], element);
         });
     
-        if (element === "Entry") {
+        if (element === activeElement) {
           button.click();
         }
         buttonContainer.appendChild(button);
@@ -41,4 +41,37 @@ async function fetchHrData(heading) {
     
       return buttonContainer;
     }
+
+  function handleDateAndTime(elementName){
+    const currentDate = new Date();
+    const currentYear = currentDate.getFullYear();
+    const hours = currentDate.getHours();
+    const minutes = currentDate.getMinutes();
+    const formattedHours = String(hours).padStart(2, "0");
+    const formattedMinutes = String(minutes).padStart(2, "0");
+    const currentTime = formattedHours + ":" + formattedMinutes;
+    const monthName = currentDate.toLocaleString("default", { month: "short" });
+    const currentDay = String(currentDate.getDate()).padStart(2, "0");
+    const formattedCurrentDate = `${currentDay}/${monthName}/${currentYear}`;
+    
+    let id_name = elementName
+    
+    elementName = document.createElement("input");
+    elementName.type = "text";
+    elementName.id = id_name;
+    elementName.name = id_name;
+    elementName.value = formattedCurrentDate;
+    $(elementName).datepicker({
+      dateFormat: "dd/mm/yy",
+      onSelect: function (selectedDate) {
+        const dateObject = $.datepicker.parseDate("dd/mm/yy", selectedDate);
+        const shortMonthName = $.datepicker.formatDate("dd/M/yy", dateObject);
+        elementName.value = shortMonthName;
+      },
+    });
+    
+    return {elementName}
+    
+  }
+    
 
