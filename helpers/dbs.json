@@ -345,6 +345,7 @@
       "status": ["Present", "DutyOff", "Holiday", "Absent", "Leave", "Late"]
     }
   ],
+
   "paySlipBreakDownTitle": {
     "Be Rich": [
       {
@@ -377,6 +378,7 @@
       }
     ]
   },
+
   "lateReasonTitle": {
     "apply": [
       "Family Issue",
@@ -387,6 +389,20 @@
     ],
     "view": ["Date/Time", "Status", "Reason", "Note"]
   },
+
+  "leaveApplicationTitle":{
+    "apply":[
+      "Family Issue",
+      "Sickness",
+      "Official Issues",
+      "Maternity Issues",
+      "Personal Issues"
+    ],
+    "view":[
+      
+    ]
+  },
+  
   "Bill_entry":{
     "Entry":{
       "short_title":[

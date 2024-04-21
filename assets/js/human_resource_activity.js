@@ -79,6 +79,13 @@ if (pageTitle) {
       break;
     case "leave application":
       title.textContent = "Leave Application";
+      fetchHrData("leaveApplicationTitle")
+        .then((result)=>{
+          leaveApplication(result)
+        })
+        .catch((error)=>{
+
+        })
       break;
     case "tax":
       title.textContent = "Tax Activity";
@@ -616,7 +623,7 @@ function lateApplication(items) {
   const reason_status_container = document.createElement("div");
 
   // Create buttons and attach event listener
-  const buttons = createLateApplyButton(items, function (data, key) {
+  const buttons = createNavigationButton(items, 'apply',function (data, key) {
     reason_status_container.innerHTML = "";
     // Create a new div to display the clicked data
     const lateAppData = document.createElement("div");
@@ -778,34 +785,98 @@ function lateApplication(items) {
   container.appendChild(lateApplicationContainer);
 }
 
-function createLateApplyButton(elements, callback) {
-  const buttonContainer = document.createElement("div");
+function leaveApplication(items){
+  const container = document.getElementById("hrmActivityMain");
+  container.innerHTML = "";
 
-  for (let element in elements) {
-    const button = document.createElement("button");
-    button.textContent = element;
+  const leaveApplicationContainer = document.createElement("div");
+  leaveApplicationContainer.setAttribute("id","leave_application_container");
+  leaveApplicationContainer.setAttribute("class","leave_application_container");
+  const leave_apply_view_container = document.createElement("div");
 
-    button.addEventListener("click", function () {
+  const buttons = createNavigationButton(items, 'apply',function (data, key) {
+    leave_apply_view_container.innerHTML = "";
+    leave_apply_view_container.setAttribute('id','leave_application_details_rootDiv')
+        
 
-      // Remove active class from all buttons
-      buttonContainer.querySelectorAll("button").forEach((btn) => {
-        btn.classList.remove("active");
-      });
-
-      // Add active class to the clicked button
-      button.classList.add("active");
-
-      callback(elements[element], element);
+    if(key === 'apply'){
+      const allLeave = [{"Alloted":12}, {"Taken":4}, {"Balance":8}];
+      const rootDiv = applyButton('leave_application_reasons','Leave Reason',data);
+      const leave_execution_container = document.createElement("div");
+      leave_execution_container.setAttribute('id','current_leave')
+      const dateTimeContainer = document.createElement("div");
+      dateTimeContainer.setAttribute("id","date_time_container");
+      dateTimeContainer.setAttribute("class","date_time_container");
+      const startDatePickerInput = handleDateAndTime('startDatePickerInput');
+      const endDatePickerInput = handleDateAndTime('endDatePickerInput');
+    
+      allLeave.forEach((item) => {
+        // Create a new HTML element for each item
+        const span = document.createElement("span");
+        const listItem = document.createElement("label");
+        const parag = document.createElement("p");
+       
+        // Set content or attributes for the HTML element
+        listItem.textContent = `Leave ${Object.keys(item)}`;
+        parag.textContent =  Object.values(item)
+        
+        // Append the HTML element to the container
+        span.appendChild(listItem)
+        span.appendChild(parag)
+        leave_execution_container.appendChild(span);
     });
 
-    if (element === "apply") {
-      button.click();
-    }
-    buttonContainer.appendChild(button);
-  }
+      dateTimeContainer.appendChild(startDatePickerInput.elementName);
+      dateTimeContainer.appendChild(endDatePickerInput.elementName);
+     
+      leave_apply_view_container.appendChild(leave_execution_container);
+      leave_apply_view_container.appendChild(dateTimeContainer);
+      leave_apply_view_container.appendChild(rootDiv);
+    }else if(key === 'view'){
+   
+      const dateRange = viewByDate()
+     
 
-  return buttonContainer;
+      leave_apply_view_container.appendChild(dateRange)      
+    }
+  })
+
+ 
+  buttons.setAttribute('id','button_container')
+  buttons.setAttribute('class','button_container')
+  leaveApplicationContainer.appendChild(buttons)
+  leaveApplicationContainer.appendChild(leave_apply_view_container)
+  container.appendChild(leaveApplicationContainer)
 }
+
+// function createApplyViewButton(elements, callback) {
+//   const buttonContainer = document.createElement("div");
+
+//   for (let element in elements) {
+//     const button = document.createElement("button");
+//     button.textContent = element;
+
+//     button.addEventListener("click", function () {
+
+//       // Remove active class from all buttons
+//       buttonContainer.querySelectorAll("button").forEach((btn) => {
+//         btn.classList.remove("active");
+//       });
+
+//       // Add active class to the clicked button
+//       button.classList.add("active");
+
+//       callback(elements[element], element);
+//     });
+
+//     if (element === "apply") {
+//       button.click();
+//     }
+//     buttonContainer.appendChild(button);
+//   }
+
+//   return buttonContainer;
+// }
 
 function showAttendanceStatus(dateInfo) {
   const attendanceStatus_div = document.createElement("div");
@@ -924,3 +995,97 @@ function createTable(tableTitle, headerData, bodyData) {
   return table;
 }
 
+function applyButton(rootClass,title,data){
+  const rootDiv = document.createElement("div");
+  rootDiv.setAttribute("id", rootClass);
+  rootDiv.setAttribute("class", rootClass);
+
+  
+  const container = document.createElement("div");
+  const reasonDiv = document.createElement("div");
+  const titleDiv = document.createElement("div");
+  const paragraph = document.createElement("p");
+  const noteDiv = document.createElement("div");
+
+  paragraph.textContent = title;
+
+  data.forEach((option, index) => {
+    const span = document.createElement("span");
+    const radioButton = document.createElement("input"); // Create radio button element
+    radioButton.type = "radio"; // Set type attribute
+    radioButton.name = "options"; // Set name attribute (all radio buttons should have the same name to form a group)
+    radioButton.value = option; // Set value attribute
+    radioButton.id = `option${index + 1}`; // Set id attribute
+
+    const label = document.createElement("label"); // Create label element for the radio button
+    label.textContent = option; // Set label text
+    label.setAttribute("for", `option${index + 1}`); // Set "for" attribute to match radio button id
+
+    // Append radio button and label to the span
+    span.appendChild(radioButton);
+    span.appendChild(label);
+
+    reasonDiv.appendChild(span);
+
+    // Check the first radio button by default
+    if (index === 0) {
+      radioButton.checked = true;
+    }
+  });
+
+  
+  const noteInput = document.createElement("input");
+  noteInput.setAttribute('id','note_input')
+  noteInput.setAttribute('class','note_input')
+  const noteLabel = document.createElement("p");
+  noteLabel.textContent = "Note";
+  noteDiv.appendChild(noteLabel);
+  noteDiv.appendChild(noteInput);
+  // reasonLabel.textContent = title;
+  const submitBtn = document.createElement("button");
+  submitBtn.textContent = "SUBMIT";
+
+
+
+  titleDiv.appendChild(paragraph)
+  container.appendChild(titleDiv);
+  container.appendChild(reasonDiv)
+  rootDiv.appendChild(container)
+  rootDiv.appendChild(noteDiv)
+  rootDiv.appendChild(submitBtn)
+
+  return rootDiv
+}
+
+function viewByDate(){
+  const root = document.createElement('div');
+  root.setAttribute('id',"date_time_range");
+  const dateRange = document.createElement('div');
+  const selected = document.createElement('div');
+  selected.setAttribute('id',"selected_date");
+  const startDates = handleDateAndTime('startDate');
+  const endDates = handleDateAndTime('endDate');
+  
+  const selected_view =`
+    <div>
+      <label>Date : </label>
+      <span>
+        <p>${startDates.elementName.value}</p>
+        <p>${endDates.elementName.value}</p>
+      </span>
+    </div>
+  `
+  selected.innerHTML = selected_view
+  
+
+  root.appendChild(startDates.elementName);
+  root.appendChild(endDates.elementName);
+
+  const submitBtn = document.createElement("button");
+  submitBtn.textContent = "OK";
+  root.appendChild(submitBtn);
+
+  root.appendChild(selected);
+
+  return root
+}
