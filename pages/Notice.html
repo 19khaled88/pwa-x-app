@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../assets/css/notice_board.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
+    <title>Notice Board</title>
+</head>
+
+<body>
+    <section class="section-container">
+        <section class="noticeTop" id="noticeTop">
+            <button class="notice_back_btn" onclick="routeToPage('../index.html','','')">
+                <img src="../assets/images/arrow-left-icon.png" alt="No Image" width="18" height="18" />
+                <p>Notice Board</p>
+            </button>
+        </section>
+        <section class="noticeMain" id="noticeMain"></section>
+
+        <section id="showPdf" class="show-pdf">
+            <div id="overlay" class="overlay"></div>
+
+            <div id="pdfViewer" class="pdf-viewer">
+                <canvas id="pdfCanvas"></canvas>
+                <button id="closePdfViewer" class="close-btn">Close</button>
+            </div>
+        </section>
+    </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.1.392/pdf.min.mjs"></script>
+    <script src="../assets/js/notice_board.js"></script>
+    <script src="../assets/js/navButton.js"></script>
+</body>
+
+</html>
