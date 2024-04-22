@@ -1,0 +1,154 @@
+body {
+    background-color: #28282b;
+    font-family: 'Roboto', sans-serif;
+}
+
+.section-container {
+
+    display: flex;
+    flex-direction: column;
+
+    margin: 0 auto;
+    /* height: 100vh; */
+}
+
+.noticeTop {
+    position: fixed;
+    /* Make the section fixed */
+    top: 0;
+    /* Position it at the top of the viewport */
+    left: 0;
+    right: 0;
+    width: 100%;
+
+
+    /* padding: 10px; */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+
+    background-color: blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+
+    .notice_back_btn {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        border: none;
+        background-color: blue;
+        height: 50px;
+
+        p {
+            color: white;
+            font-size: 18px;
+        }
+    }
+}
+
+.noticeMain {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    margin: 40px auto 2px;
+
+    padding-top: 5px;
+
+
+    .individual-notice {
+        color: white;
+        border: 1px solid gray;
+        border-radius: 5px;
+        padding: 8px;
+        width: 95%;
+
+        .title-attachment{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            gap: 5px;
+
+            p {
+                width: 80%;
+                font-size: 15px;
+                text-align: left;
+            }
+
+            button {
+                width: 15%;
+                height: 100%;
+                background-color: #28282b;
+                border: none;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+
+        .title {
+            font-size: 15px;
+            text-align: left;
+        }
+
+        p {
+            text-align: right;
+            margin: 0;
+            font-size: 12px;
+        }
+
+        .info {
+            font-size: 13px;
+        }
+
+
+    }
+}
+
+.showPdf{
+    .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+        z-index: 9999; /* Ensure it appears above other content */
+      }
+      
+      .pdf-viewer {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #fff;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        z-index: 10000; /* Ensure it appears above the overlay */
+      }
+      
+      .pdf-viewer canvas {
+        max-width: 100%;
+        height: auto;
+      }
+      
+      .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        padding: 5px 10px;
+        background-color: #ccc;
+        border: none;
+        cursor: pointer;
+      }
+}

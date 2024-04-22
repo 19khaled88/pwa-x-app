@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
     <link rel="stylesheet" href="assets/css/home.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
     
   </head>
   <body>
@@ -34,9 +35,9 @@
         </a> -->
       </section>
       <section class="bottom-section" id="bottom-section">
-        <button>Notice Board</button>
-        <button>Contacts</button>
-        <button>Options</button>
+        <button id="notice_nav" onclick="routeToPage('./pages/Notice.html','noticeMain', 'Notice Board')">Notice Board</button>
+        <button id="contact_nav">Contacts</button>
+        <button id="options_nav">Options</button>
       </section>
     </div>
     <script src="assets/js/homepage.js"></script>
