@@ -6,7 +6,7 @@ const urlParams = new URLSearchParams(queryString);
 const pageTitle = urlParams.get("data_title");
 
 const filterTitle = [
-    {"C":"Companny"},
+    {"C":"Company"},
     {"L":"Location"},
     {"D":"Department"},
     {"P":"Position"},
@@ -37,25 +37,39 @@ fetch(url)
   });
 }
 
+
+
+
+
+
 function showContact(data){
     const contactsMain = document.getElementById("contactsMain");
-
+    console.log(data.data)
     const employeeHTML = data.data.map(element => `
         <div class="employee">
-            <img src="${element.emImage}" alt="Employee Image">
-            <p>${element.emName}</p>
+            <div class="leftView">
+                <img src="${element.emImage}" alt="Employee Image">
+            </div>
+            <div class="rightView">
+                <p class="emName">${element.emName}</p>
+                <p class="emDegi">${element.emDesignation}</p>
+                <p class="emDegi">${element.emOrganization}</p>
+                <p class="emDegi">${element.emPhone}</p>
+            </div>
+                
+                
         </div>
     `).join('');
 
 
-    contactsMain.innerHTML = `
+    contactsMain.innerHTML =`
         <div class="search-container">
             <input type="text" id="searchInput" placeholder="Search by Name or Mobile">
             <button id="searchButton"><img src="" alt="Search"></button>
         </div>
         <div class="filter-container">
-            ${filterTitle.map((item) => `
-                <button>
+            ${filterTitle.map((item) =>`
+                <button onclick='handleFilterTitle(${JSON.stringify(Object.values(item)[0]).trim()})'>
                     <h1>${Object.keys(item)}</h1>
                     <label>${Object.values(item)}</label>
                 </button>
@@ -65,7 +79,11 @@ function showContact(data){
         </div>
         <div class="individual-employee-container">
             ${employeeHTML}
-        </div>
-    `   
+        </div>`;
 }
 
+
+function handleFilterTitle(data){
+    
+    console.log(data);
+}
