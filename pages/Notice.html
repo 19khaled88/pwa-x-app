@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../assets/css/notice_board.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-RQN5YfDEm8w7b3LDDwF/Q/y7Pt6i8FjzLW9Pwp9I61PJVPMuFFI25SYw0esxjIo2E+6FZL7kzqo0HkOulPbmRQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js" integrity="sha512-Z8CqofpIcnJN80feS2uccz+pXWgZzeKxDsDNMD/dJ6997/LSRY+W4NmEt9acwR+Gt9OHN0kkI1CTianCwoqcjQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <title>Notice Board</title>
 </head>
 
@@ -18,17 +20,18 @@
             </button>
         </section>
         <section class="noticeMain" id="noticeMain"></section>
-
-        <section id="showPdf" class="show-pdf">
-            <div id="overlay" class="overlay"></div>
-
-            <div id="pdfViewer" class="pdf-viewer">
-                <canvas id="pdfCanvas"></canvas>
-                <button id="closePdfViewer" class="close-btn">Close</button>
+        <!-- Overlay container -->
+        <section id="pdfOverlay" class="overlay">
+            <!-- Modal content -->
+            <div class="modal">
+                <!-- Close button -->
+                <button class="close-button" onclick="closePDFOverlay()">Close</button>
+                <!-- PDF container -->
+                <div id="pdfContainer"></div>
             </div>
         </section>
     </section>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.1.392/pdf.min.mjs"></script>
+    
     <script src="../assets/js/notice_board.js"></script>
     <script src="../assets/js/navButton.js"></script>
 </body>

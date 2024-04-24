@@ -4,10 +4,8 @@ body {
 }
 
 .section-container {
-
     display: flex;
     flex-direction: column;
-
     margin: 0 auto;
     /* height: 100vh; */
 }
@@ -26,7 +24,7 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     z-index: 100;
 
-    background-color: blue;
+    /* background-color: blue; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -41,7 +39,7 @@ body {
         border: none;
         background-color: blue;
         height: 50px;
-
+        width: 100%;
         p {
             color: white;
             font-size: 18px;
@@ -113,42 +111,51 @@ body {
     }
 }
 
-.showPdf{
-    .overlay {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
-        z-index: 9999; /* Ensure it appears above other content */
-      }
-      
-      .pdf-viewer {
-        display: none;
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: #fff;
-        padding: 20px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        z-index: 10000; /* Ensure it appears above the overlay */
-      }
-      
-      .pdf-viewer canvas {
-        max-width: 100%;
-        height: auto;
-      }
-      
-      .close-btn {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        padding: 5px 10px;
-        background-color: #ccc;
-        border: none;
-        cursor: pointer;
-      }
+/* Overlay styles */
+#pdfOverlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+            display: none; /* Initially hidden */
+            justify-content: center;
+            align-items: center;
+    /* Modal styles */
+    .modal {
+            background-color: white;
+            padding:10px;
+            width: 90vw; /* 90% of viewport width */
+            height: 100vh; /* 90% of viewport height */
+            max-width: 100%; /* Limit maximum width */
+            max-height: 100%; /* Limit maximum height */
+            overflow: auto;
+            border-radius: 8px;
+            
+
+
+            /* pdfContainer styles */
+        #pdfContainer {
+            width: 100%;
+            height: 100%;
+            img{
+                padding-top: 50px;
+                width: 100%;
+                height: 80%;
+            }
+            
+        }
+            
+        .close-button {
+            position: absolute;
+            top: 4%;
+            left: 8%;
+            cursor: pointer;
+        }
+    }
+
+    
 }
+
+
