@@ -11,6 +11,7 @@ if (pageTitle === "Notice Board") {
   const url =
     "https://www.condomshopbd.com/xapi/emp.ashx?cmd=note&list=allnew&imei=70:3a:51:90:39:05";
 
+   
   // Fetch data from the URL
   fetch(url)
     .then((response) => {
@@ -23,6 +24,7 @@ if (pageTitle === "Notice Board") {
     })
     .then((data) => {
       // Work with the fetched data
+      
       showNotice(data);
     })
     .catch((error) => {
@@ -32,7 +34,9 @@ if (pageTitle === "Notice Board") {
 }
 
 function showNotice(data) {
+
   const noticeMain = document.getElementById("noticeMain");
+  
   data.forEach((item, index) => {
     const individualNotices = document.createElement("div");
     individualNotices.classList.add("individual-notice"); // Add a class instead of an ID
@@ -46,13 +50,14 @@ function showNotice(data) {
       .replace(/%2c/g, ",") // Replace '%2c' with ','
       .replace(/%3a/g, ":") // Replace '%3a' with ':'
       .replace(/%e2%80%99/g, "'"); // Replace '%e2%80%99' with apostrophe symbol
-
+    
+    
     
     if(item.img_id !== ""){
         individualNotices.innerHTML = `
         <span class="title-attachment" id="title-attachment"> 
             <p>${item.title}</p>
-            <button onClick="handleAttachment('${item.img_id}')" class="attachment-button">
+            <button onClick="showPDF('${item.img_id}')" class="attachment-button">
                 <img src="../assets/images/paper-clip.png" alt=""/>
             </button>
         </span>
@@ -67,46 +72,56 @@ function showNotice(data) {
         `;
     }
 
+
     noticeMain.appendChild(individualNotices);
   });
 }
 
-function handleAttachment(attachmentUrl) {
- 
-    console.log("Attachment URL:", attachmentUrl);
-
-    StartPdf()
-   
-}
-
-function StartPdf(){
-    let loadingTask = pdfjsLib.getDocument(attachmentUrl)
-    pdfDoc = null,
-    canvas = document.querySelector('#pdfCanvas'),
-    ctx = canvas.getContext('2d'),
-    scale = 1.5,
-    numPage = 1,
-    console.log('Hi')
-}
-
-const overlay = document.getElementById("overlay");
-const pdfViewer = document.getElementById("pdfViewer");
-const pdfCanvas = document.getElementById("pdfCanvas");
-const closePdfViewerBtn = document.getElementById("closePdfViewer");
-
-
-
-  // Function to show the overlay and PDF viewer
-function showPdfViewer() {
-    overlay.style.display = "block";
-    pdfViewer.style.display = "block";
-  }
+function showPDF(pdfUrl) {
+  var pdfContainer = document.getElementById("pdfContainer");
+  var pdfOverlay = document.getElementById("pdfOverlay");
+  var noticeTop = document.getElementById("noticeTop")
+  // Clear any existing content in the container
   
-// Function to hide the overlay and PDF viewer
-function hidePdfViewer() {
-overlay.style.display = "none";
-pdfViewer.style.display = "none";
+  var extension = getFileExtension(pdfUrl);
+  
+  pdfContainer.innerHTML = "";
+  noticeTop.style.display = 'none'
+
+  // Check if the file is a PDF
+  if (extension.toLowerCase() === 'pdf') {
+    // Create an <iframe> element
+    var iframeElement = document.createElement("iframe");
+    iframeElement.setAttribute("src", pdfUrl);
+    iframeElement.setAttribute("width", "100%");
+    iframeElement.setAttribute("height", "100%");
+
+    // Append the <iframe> element to the container
+    pdfContainer.appendChild(iframeElement);
+} else if (extension.toLowerCase() === 'jpg' || extension.toLowerCase() === 'jpeg' || extension.toLowerCase() === 'png') {
+    // Create an <img> element
+    var imgElement = document.createElement("img");
+    imgElement.setAttribute("src", pdfUrl);
+    imgElement.setAttribute("alt", "Image");
+
+    // Append the <img> element to the container
+    pdfContainer.appendChild(imgElement);
 }
 
-// Add event listener to close button to hide the PDF viewer
-closePdfViewerBtn.addEventListener("click", hidePdfViewer);
+  //show the overlay
+  pdfOverlay.style.display = "flex"; // Show overlay
+}
+
+function closePDFOverlay() {
+  var pdfOverlay = document.getElementById("pdfOverlay");
+  var noticeTop = document.getElementById("noticeTop")
+  // Hide the overlay
+  pdfOverlay.style.display = "none"; // Hide overlay
+  noticeTop.style.display = 'block'
+}
+
+function getFileExtension(filePath) {
+  return filePath.substring(filePath.lastIndexOf('.') + 1);
+}
+
+
